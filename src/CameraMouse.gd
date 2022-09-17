@@ -6,14 +6,12 @@ onready var is_up = true
 
 func _process(delta):
 	var mouse_pos = get_viewport().get_mouse_position()
+	
 	if is_up:
 		offset.y = lerp(offset.y, 0, 0.02)
-		if mouse_pos.y > 2 * viewport_dim.y / 3:
-			print("GOING DOWN")
+		if mouse_pos.y > viewport_dim.y / 2:
 			is_up = false
 	else: 
-		offset.y = lerp(offset.y, 256-144, 0.01)
-#		offset.y = 256-144
-		if mouse_pos.y < viewport_dim.y / 3:
-			print("GOING UP")
+		offset.y = lerp(offset.y, mouse_pos.y, 0.02)
+		if mouse_pos.y < viewport_dim.y / 4:
 			is_up = true
