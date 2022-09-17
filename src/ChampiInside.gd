@@ -26,10 +26,15 @@ func _ready():
 	for ingredient in $Ingredients.get_children():
 		ingredient.connect("clicked", self, "_onIngredient_clicked")
 
+const champi_couleurs = [["c92e70", "9e2081"],["5d7668", "235a63"],["ffb366", "ff5b4f"],["ad82cf", "8455a9"],]
+
 func spawn_champi():
 	
 	if cur_table > max_tables: return
 	var champ = Champignon.instance()
+	var colors = champi_couleurs[randi()%champi_couleurs.size()]
+	print(colors)
+	champ.set_colors(colors[0], colors[1])
 	var table
 	while true:
 		table = get_node("YSort/Tables/Table" + str(cur_table))
