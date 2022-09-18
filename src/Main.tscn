@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://src/CameraMouse.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/bg.png" type="Texture" id=2]
@@ -22,6 +22,95 @@ outlines = [ PoolVector2Array( 85, 73, 86, 63, 169, 64, 214, 50, 170, 23, 106, 2
 [sub_resource type="CapsuleShape2D" id=10]
 radius = 3.0
 height = 6.0
+
+[sub_resource type="Animation" id=12]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Walk"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.35, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -15.5, 15.5, 0.0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "RESET"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachine" id=19]
+states/Idle/node = SubResource( 15 )
+states/Idle/position = Vector2( 228, 76 )
+states/RESET/node = SubResource( 21 )
+states/RESET/position = Vector2( 323, 181 )
+states/Walk/node = SubResource( 16 )
+states/Walk/position = Vector2( 435, 87 )
+transitions = [ "Idle", "RESET", SubResource( 22 ), "RESET", "Walk", SubResource( 23 ), "Walk", "RESET", SubResource( 24 ), "RESET", "Idle", SubResource( 25 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
 
 [sub_resource type="Curve2D" id=2]
 resource_local_to_scene = true
@@ -118,6 +207,19 @@ position = Vector2( -7, 7 )
 rotation = 1.5708
 shape = SubResource( 10 )
 one_way_collision_margin = 0.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="ChampiInside/YSort/Barista"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChampiInside/YSort/Barista"]
+anims/Idle = SubResource( 12 )
+anims/RESET = SubResource( 13 )
+anims/Walk = SubResource( 14 )
+
+[node name="AnimationTree" type="AnimationTree" parent="ChampiInside/YSort/Barista"]
+tree_root = SubResource( 19 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 20 )
 
 [node name="Bar" type="Sprite" parent="ChampiInside/YSort"]
 position = Vector2( 120, 70 )

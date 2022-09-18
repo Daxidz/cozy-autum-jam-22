@@ -20,6 +20,7 @@ func _unhandled_input(event):
 func move_along_path(distance):
 	var last_point = character.position
 	while path.size():
+		character.get_animState().travel("Walk")
 		var distance_between_points = last_point.distance_to(path[0])
 		# The position to move to falls between two points.
 		if distance <= distance_between_points:
@@ -29,6 +30,7 @@ func move_along_path(distance):
 		distance -= distance_between_points
 		last_point = path[0]
 		path.remove(0)
+		character.get_animState().travel("Idle")
 	# The character reached the end of the path.
 	character.position = last_point
 	set_process(false)
