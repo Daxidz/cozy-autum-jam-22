@@ -370,15 +370,15 @@ texture = ExtResource( 15 )
 position = Vector2( 32, 40 )
 texture = ExtResource( 5 )
 
-[node name="violet" type="Node2D" parent="ChampiInside/Livre/Recette/ColorRect"]
+[node name="purple" type="Node2D" parent="ChampiInside/Livre/Recette/ColorRect"]
 visible = false
 position = Vector2( 120, 8 )
 
-[node name="Sprite" type="Sprite" parent="ChampiInside/Livre/Recette/ColorRect/violet"]
+[node name="Sprite" type="Sprite" parent="ChampiInside/Livre/Recette/ColorRect/purple"]
 position = Vector2( -8, 40 )
 texture = ExtResource( 5 )
 
-[node name="Sprite2" type="Sprite" parent="ChampiInside/Livre/Recette/ColorRect/violet"]
+[node name="Sprite2" type="Sprite" parent="ChampiInside/Livre/Recette/ColorRect/purple"]
 position = Vector2( 32, 40 )
 texture = ExtResource( 14 )
 
