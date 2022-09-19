@@ -15,10 +15,10 @@ onready var max_tables = $YSort/Tables.get_child_count()
 
 
 const RECETTES = { 
-					"yellow": ["Framboises", "Framboises"],
-					"violet": ["Mirtille", "Miel"],
-					"green": ["Miel", "Framboises"],
-					"orange": ["Framboises", "Mirtille"] 
+					"orange": ["Miel", "Framboises"],
+					"violet": ["Mirtille", "Framboises"],
+					"pink": ["Framboises", "Framboises"],
+					"green": ["Mirtille", "Miel"] 
 				}
 
 func _ready():
@@ -76,6 +76,7 @@ func check_recette(ingredients) -> int:
 		var ing = RECETTES[recette]
 		if ingredients == ing or ingredients_inv == ing:
 			print(recette)
+			show_recette(recette)
 #			$Chauderon.modulate = Color("yellow")
 			return 0
 	return 0
@@ -85,3 +86,7 @@ func _input(event):
 		print("SPAWN")
 		for i in 8:
 			spawn_champi()
+			
+func show_recette(recette):
+	var rec = get_node("Livre/Recette/ColorRect/" + recette)
+	rec.visible = visible
