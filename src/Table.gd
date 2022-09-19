@@ -11,6 +11,9 @@ func _ready():
 
 func is_full() -> bool:
 	return nb_champis == MAX_CHAMPI
+	
+#func check_champis_color():
+#	if $YSort/Path1/PathFollow2D. 
 
 func add_champi(champi):
 	nb_champis += 1

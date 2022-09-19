@@ -15,7 +15,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -39, 120, 0, 0, 0, 0, -40, 61, 0, 0, 0, 0, -13, 30, 0, 0, 0, 0, 20, -9 )
 }
 
-[node name="Table" type="Node2D"]
+[node name="Table" type="Node2D" groups=["tables"]]
 script = ExtResource( 2 )
 
 [node name="YSort" type="YSort" parent="."]

@@ -13,10 +13,11 @@ const BASE_TABLE = 1
 var cur_table = BASE_TABLE
 onready var max_tables = $YSort/Tables.get_child_count()
 
+var cur_recette: String = ""
 
 const RECETTES = { 
 					"orange": ["Miel", "Framboises"],
-					"violet": ["Mirtille", "Framboises"],
+					"purple": ["Mirtille", "Framboises"],
 					"pink": ["Framboises", "Framboises"],
 					"green": ["Mirtille", "Miel"] 
 				}
@@ -26,15 +27,21 @@ func _ready():
 	for ingredient in $Ingredients.get_children():
 		ingredient.connect("clicked", self, "_onIngredient_clicked")
 
-const champi_couleurs = [["c92e70", "9e2081"],["5d7668", "235a63"],["ffb366", "ff5b4f"],["ad82cf", "8455a9"],]
+const champi_couleurs = {
+						"pink":["c92e70", "9e2081"],
+						"green":["5d7668", "235a63"],
+						"orange":["ffb366", "ff5b4f"],
+						"purple":["ad82cf", "8455a9"]
+						}
 
 func spawn_champi():
 	
 	if cur_table > max_tables: return
 	var champ = Champignon.instance()
-	var colors = champi_couleurs[randi()%champi_couleurs.size()]
+	var colors = champi_couleurs[champi_couleurs.keys()[randi()%champi_couleurs.size()]]
 	print(colors)
 	champ.set_colors(colors[0], colors[1])
+	champ.connect("clicked", self, "_on_Champi_clicked")
 	var table
 	while true:
 		table = get_node("YSort/Tables/Table" + str(cur_table))
@@ -64,6 +71,15 @@ func _onChauderon_melanger():
 		nb_ingredients_selected = 0
 		list_ingredients.clear()
 		
+func _on_Champi_clicked(champi):
+	if cur_recette != "":
+		var new_colors = champi_couleurs[cur_recette]
+		champi.set_colors(new_colors[0], new_colors[1])
+		
+		get_tree().call_group("champis", "make_selectable", false)
+		cur_recette = ""
+	
+		
 func check_recette(ingredients) -> int:
 	
 	var is_ok: bool = false
@@ -77,8 +93,10 @@ func check_recette(ingredients) -> int:
 		if ingredients == ing or ingredients_inv == ing:
 			print(recette)
 			show_recette(recette)
+			cur_recette = recette
 #			$Chauderon.modulate = Color("yellow")
-			return 0
+			get_tree().call_group("champis", "make_selectable", true)
+			return 1
 	return 0
 
 func _input(event):

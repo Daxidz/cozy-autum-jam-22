@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/shaders/replace_cols.tres" type="Shader" id=1]
 [ext_resource path="res://assets/img/champi.png" type="Texture" id=2]
@@ -58,7 +58,11 @@ tracks/0/keys = {
 "values": [ -10.0, 10.0 ]
 }
 
-[node name="Champi" type="Sprite"]
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 13.0
+height = 5.26264
+
+[node name="Champi" type="Sprite" groups=["champis"]]
 material = SubResource( 1 )
 position = Vector2( 0, -0.368682 )
 texture = ExtResource( 2 )
@@ -68,3 +72,12 @@ script = ExtResource( 3 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 3 )
 anims/walk = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 4.36868 )
+shape = SubResource( 4 )
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
