@@ -23,9 +23,16 @@ const RECETTES = {
 				}
 
 func _ready():
+	randomize()
 	$Chauderon.connect("melanger", self, "_onChauderon_melanger")
 	for ingredient in $Ingredients.get_children():
 		ingredient.connect("clicked", self, "_onIngredient_clicked")
+	
+	for table in $YSort/Tables.get_children():
+		table.connect("champi_matched", self, "_on_Champis_matched")
+		
+	for i in 8:
+			spawn_champi()
 
 const champi_couleurs = {
 						"pink":["c92e70", "9e2081"],
@@ -65,9 +72,7 @@ func _onIngredient_clicked(name: String):
 
 func _onChauderon_melanger():
 	if nb_ingredients_selected == MAX_INGREDIENTS:
-		check_recette(list_ingredients)
-		
-			
+		check_recette(list_ingredients)		
 		nb_ingredients_selected = 0
 		list_ingredients.clear()
 		
@@ -78,6 +83,8 @@ func _on_Champi_clicked(champi):
 		
 		get_tree().call_group("champis", "make_selectable", false)
 		cur_recette = ""
+		var table = champi.table
+		table.check_champis_color()
 	
 		
 func check_recette(ingredients) -> int:
@@ -94,14 +101,16 @@ func check_recette(ingredients) -> int:
 			print(recette)
 			show_recette(recette)
 			cur_recette = recette
-#			$Chauderon.modulate = Color("yellow")
 			get_tree().call_group("champis", "make_selectable", true)
 			return 1
 	return 0
+	
+func _on_Champis_matched(champis):
+	for c in champis:
+		c.emit_hearts()
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		print("SPAWN")
 		for i in 8:
 			spawn_champi()
 			

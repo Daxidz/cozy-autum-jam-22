@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/shaders/replace_cols.tres" type="Shader" id=1]
 [ext_resource path="res://assets/img/champi.png" type="Texture" id=2]
 [ext_resource path="res://src/champis/Champi.gd" type="Script" id=3]
+[ext_resource path="res://assets/img/coeur.png" type="Texture" id=4]
+[ext_resource path="res://src/shaders/outline.tres" type="Shader" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -62,6 +64,40 @@ tracks/0/keys = {
 radius = 13.0
 height = 5.26264
 
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 5 )
+shader_param/color_light = null
+shader_param/color_dark = null
+shader_param/outlined = false
+shader_param/line_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="CanvasItemMaterial" id=5]
+next_pass = SubResource( 10 )
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id=6]
+max_value = 2.0
+_data = [ Vector2( 0, 1 ), 0.0, 2.77715, 0, 0, Vector2( 1, 1.7 ), 3.23636, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 2
+emission_box_extents = Vector3( 8, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+anim_speed = 1.0
+anim_speed_curve = SubResource( 7 )
+
 [node name="Champi" type="Sprite" groups=["champis"]]
 material = SubResource( 1 )
 position = Vector2( 0, -0.368682 )
@@ -78,6 +114,16 @@ anims/walk = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, 4.36868 )
 shape = SubResource( 4 )
+
+[node name="HeartPart" type="Particles2D" parent="."]
+material = SubResource( 5 )
+position = Vector2( 0, -4.63132 )
+emitting = false
+amount = 15
+one_shot = true
+randomness = 0.73
+process_material = SubResource( 8 )
+texture = ExtResource( 4 )
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
