@@ -381,13 +381,12 @@ stretch_mode = 2
 script = ExtResource( 4 )
 
 [node name="Recette" type="CanvasLayer" parent="ChampiInside/Livre"]
-visible = false
 
 [node name="ColorRect" type="TextureRect" parent="ChampiInside/Livre/Recette"]
-margin_left = 26.0
-margin_top = -5.0
-margin_right = 1360.0
-margin_bottom = 1030.0
+margin_left = 20.0
+margin_top = 4.0
+margin_right = 1499.0
+margin_bottom = 1039.0
 rect_scale = Vector2( 0.14, 0.14 )
 texture = ExtResource( 20 )
 
@@ -480,11 +479,12 @@ position = Vector2( -2, 34 )
 texture = ExtResource( 14 )
 
 [node name="Bouteilles" type="Node2D" parent="ChampiInside/Livre/Recette/Control"]
+position = Vector2( 4, 3 )
 
 [node name="BouteillePink" parent="ChampiInside/Livre/Recette/Control/Bouteilles" instance=ExtResource( 9 )]
 material = SubResource( 27 )
 position = Vector2( 92, 35 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.6, 1.6 )
 
 [node name="Sprite" parent="ChampiInside/Livre/Recette/Control/Bouteilles/BouteillePink" index="0"]
 rotation = -0.153073
@@ -493,7 +493,7 @@ frame = 1
 [node name="BouteilleOrange" parent="ChampiInside/Livre/Recette/Control/Bouteilles" instance=ExtResource( 9 )]
 material = SubResource( 28 )
 position = Vector2( 59, 92 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.6, 1.6 )
 
 [node name="Sprite" parent="ChampiInside/Livre/Recette/Control/Bouteilles/BouteilleOrange" index="0"]
 rotation = 0.00324498
@@ -501,8 +501,8 @@ frame = 3
 
 [node name="BouteilleGreen" parent="ChampiInside/Livre/Recette/Control/Bouteilles" instance=ExtResource( 9 )]
 material = SubResource( 29 )
-position = Vector2( 175, 83 )
-scale = Vector2( 2, 2 )
+position = Vector2( 146, 85 )
+scale = Vector2( 1.6, 1.6 )
 
 [node name="Sprite" parent="ChampiInside/Livre/Recette/Control/Bouteilles/BouteilleGreen" index="0"]
 rotation = 0.0998307
@@ -510,8 +510,8 @@ frame = 5
 
 [node name="BouteillePurple" parent="ChampiInside/Livre/Recette/Control/Bouteilles" instance=ExtResource( 9 )]
 material = SubResource( 30 )
-position = Vector2( 142, 24 )
-scale = Vector2( 2, 2 )
+position = Vector2( 175, 33 )
+scale = Vector2( 1.6, 1.6 )
 
 [node name="Sprite" parent="ChampiInside/Livre/Recette/Control/Bouteilles/BouteillePurple" index="0"]
 rotation = -0.137016
