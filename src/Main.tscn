@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://src/CameraMouse.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/bg.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://src/Menu.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/Main.gd" type="Script" id=19]
 [ext_resource path="res://assets/img/livre_hd.png" type="Texture" id=20]
+[ext_resource path="res://assets/audio/Smurfinbass.mp3" type="AudioStream" id=17]
 
 [sub_resource type="NavigationPolygon" id=11]
 vertices = PoolVector2Array( 65, 47, 39, 42, 45, 37, 72, 25, 106, 20, 170, 23, 206, 45, 178, 50, 90, 50 )
