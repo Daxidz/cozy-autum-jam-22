@@ -4,7 +4,12 @@ extends Camera2D
 onready var viewport_dim = get_viewport_rect().size
 onready var is_up = true
 
+var should_move: bool = false
 func _process(delta):
+	if not should_move:
+		offset.y = 0
+		return
+	
 	var mouse_pos = get_viewport().get_mouse_position()
 	
 	if is_up:
@@ -12,6 +17,6 @@ func _process(delta):
 		if mouse_pos.y > viewport_dim.y / 2:
 			is_up = false
 	else: 
-		offset.y = lerp(offset.y, mouse_pos.y, 0.02)
+		offset.y = lerp(offset.y , mouse_pos.y,  0.02)
 		if mouse_pos.y < viewport_dim.y / 4:
 			is_up = true

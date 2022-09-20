@@ -109,6 +109,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Eyes:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "dance"
@@ -525,7 +537,6 @@ shape = SubResource( 4 )
 [node name="HeartPart" type="Particles2D" parent="."]
 material = SubResource( 5 )
 position = Vector2( 0, -6 )
-emitting = false
 amount = 10
 randomness = 0.73
 local_coords = false

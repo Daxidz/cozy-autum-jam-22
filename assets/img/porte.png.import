@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mockup_menu.png-bdcc912215824df3c9446ac7f4bb0588.stex"
+path="res://.import/porte.png-1e628636905b0ed08948d9dbcbc7198d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/mockup_menu.png"
-dest_files=[ "res://.import/mockup_menu.png-bdcc912215824df3c9446ac7f4bb0588.stex" ]
+source_file="res://assets/img/porte.png"
+dest_files=[ "res://.import/porte.png-1e628636905b0ed08948d9dbcbc7198d.stex" ]
 
 [params]
 

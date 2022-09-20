@@ -60,7 +60,12 @@ func spawn_all():
 		spawn_champi(colors[0])
 		spawn_champi(colors[1])
 
-func _ready():
+func set_camera_enabled(enabled):
+	$CameraMouse.should_move = enabled
+
+
+func start_game():
+	
 	randomize()
 	$Chauderon.connect("melanger", self, "_onChauderon_melanger")
 	for ingredient in $YSort/Ingredients.get_children():
@@ -72,6 +77,9 @@ func _ready():
 	spawn_all()
 	randomize_recettes()
 	$Livre.prepare_recettes_sprites(RECETTES)
+	
+#func _ready():
+#	start_game()
 
 const champi_couleurs = {
 						"pink":["c92e70", "9e2081"],
@@ -169,5 +177,5 @@ func _on_Champis_matched(champis):
 
 			
 func show_recette(recette):
-	var rec = get_node("Livre/Recette/ColorRect/" + recette)
+	var rec = get_node("Livre/Recette/Control/" + recette)
 	rec.visible = visible

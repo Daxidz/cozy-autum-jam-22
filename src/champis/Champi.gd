@@ -36,6 +36,8 @@ func get_shooked():
 	
 func emit_hearts():
 	$AnimationPlayer.play("in_love")
+	$InteractTimer.stop()
+	
 	
 func get_blase():
 	$AnimationPlayer.play("blase")
@@ -65,6 +67,8 @@ func walk():
 
 func dance():
 	$AnimationPlayer.play("dance")
+	$InteractTimer.stop()
+	
 
 func _input(event):
 	if selected and event.is_action_pressed("click"):
@@ -89,7 +93,7 @@ func _on_Area2D_mouse_exited():
 	selected = false
 	outline(false)
 	var anim = $AnimationPlayer.current_animation
-	if anim != "in_love" and anim != "shock":
+	if anim != "in_love" and anim != "shock" and anim != "dance":
 		$AnimationPlayer.play("idle")
 
 
