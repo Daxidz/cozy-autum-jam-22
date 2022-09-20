@@ -5,9 +5,10 @@
 [ext_resource path="res://src/shaders/replace_cols.tres" type="Shader" id=3]
 
 [sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
 shader = ExtResource( 3 )
-shader_param/color_light = null
-shader_param/color_dark = null
+shader_param/color_light = Color( 1, 1, 0.882353, 1 )
+shader_param/color_dark = Color( 0.619608, 0.12549, 0.505882, 1 )
 shader_param/outlined = false
 shader_param/corners = false
 shader_param/line_color = Color( 1, 1, 1, 1 )

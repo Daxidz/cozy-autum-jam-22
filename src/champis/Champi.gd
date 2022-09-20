@@ -93,7 +93,7 @@ func _on_Area2D_mouse_exited():
 	selected = false
 	outline(false)
 	var anim = $AnimationPlayer.current_animation
-	if anim != "in_love" and anim != "shock" and anim != "dance":
+	if anim != "in_love" and anim != "shock" and anim != "dance" and anim != "blase":
 		$AnimationPlayer.play("idle")
 
 

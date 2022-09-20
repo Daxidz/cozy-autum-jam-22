@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://src/CameraMouse.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/bg.png" type="Texture" id=2]
@@ -16,11 +16,11 @@
 [ext_resource path="res://assets/img/mirtilles.png" type="Texture" id=14]
 [ext_resource path="res://assets/img/miel.png" type="Texture" id=15]
 [ext_resource path="res://src/Table.tscn" type="PackedScene" id=16]
-[ext_resource path="res://assets/audio/Smurfin.mp3" type="AudioStream" id=17]
+[ext_resource path="res://assets/audio/Smurfinbass.mp3" type="AudioStream" id=17]
 [ext_resource path="res://src/Menu.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/Main.gd" type="Script" id=19]
 [ext_resource path="res://assets/img/livre_hd.png" type="Texture" id=20]
-[ext_resource path="res://assets/audio/Smurfinbass.mp3" type="AudioStream" id=17]
+[ext_resource path="res://src/shaders/replace_cols.tres" type="Shader" id=21]
 
 [sub_resource type="NavigationPolygon" id=11]
 vertices = PoolVector2Array( 65, 47, 39, 42, 45, 37, 72, 25, 106, 20, 170, 23, 206, 45, 178, 50, 90, 50 )
@@ -168,6 +168,51 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -49, 40, 0, 0, 0, 0, -39, -9, 0, 0, 0, 0, -8, -25, 0, 0, 0, 0, 15, -19 )
 }
 
+[sub_resource type="ShaderMaterial" id=26]
+resource_local_to_scene = true
+shader = ExtResource( 21 )
+shader_param/color_light = Color( 1, 1, 0.882353, 1 )
+shader_param/color_dark = Color( 0.619608, 0.12549, 0.505882, 1 )
+shader_param/outlined = false
+shader_param/corners = false
+shader_param/line_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=27]
+resource_local_to_scene = true
+shader = ExtResource( 21 )
+shader_param/color_light = Color( 0.788235, 0.180392, 0.439216, 1 )
+shader_param/color_dark = Color( 0.619608, 0.12549, 0.505882, 1 )
+shader_param/outlined = true
+shader_param/corners = false
+shader_param/line_color = Color( 0.788235, 0.180392, 0.439216, 1 )
+
+[sub_resource type="ShaderMaterial" id=28]
+resource_local_to_scene = true
+shader = ExtResource( 21 )
+shader_param/color_light = Color( 1, 0.701961, 0.4, 1 )
+shader_param/color_dark = Color( 1, 0.356863, 0.309804, 1 )
+shader_param/outlined = true
+shader_param/corners = false
+shader_param/line_color = Color( 1, 0.701961, 0.4, 1 )
+
+[sub_resource type="ShaderMaterial" id=29]
+resource_local_to_scene = true
+shader = ExtResource( 21 )
+shader_param/color_light = Color( 0.364706, 0.462745, 0.407843, 1 )
+shader_param/color_dark = Color( 0.137255, 0.352941, 0.388235, 1 )
+shader_param/outlined = true
+shader_param/corners = false
+shader_param/line_color = Color( 0.364706, 0.462745, 0.407843, 1 )
+
+[sub_resource type="ShaderMaterial" id=30]
+resource_local_to_scene = true
+shader = ExtResource( 21 )
+shader_param/color_light = Color( 0.678431, 0.509804, 0.811765, 1 )
+shader_param/color_dark = Color( 0.517647, 0.333333, 0.662745, 1 )
+shader_param/outlined = true
+shader_param/corners = false
+shader_param/line_color = Color( 0.678431, 0.509804, 0.811765, 1 )
+
 [node name="Main" type="Node2D"]
 script = ExtResource( 19 )
 
@@ -301,6 +346,7 @@ curve = SubResource( 9 )
 position = Vector2( -49, 40 )
 
 [node name="Bouteille" parent="ChampiInside/YSort" instance=ExtResource( 9 )]
+material = SubResource( 26 )
 position = Vector2( 100, 48 )
 z_index = 1
 
@@ -342,7 +388,7 @@ margin_left = 26.0
 margin_top = -5.0
 margin_right = 1360.0
 margin_bottom = 1030.0
-rect_scale = Vector2( 0.15, 0.15 )
+rect_scale = Vector2( 0.14, 0.14 )
 texture = ExtResource( 20 )
 
 [node name="Control" type="Control" parent="ChampiInside/Livre/Recette"]
@@ -350,6 +396,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ColorRect1" type="ColorRect" parent="ChampiInside/Livre/Recette/Control"]
+visible = false
 margin_left = 43.0
 margin_top = 85.0
 margin_right = 67.0
@@ -357,6 +404,7 @@ margin_bottom = 109.0
 color = Color( 1, 0.701961, 0.4, 1 )
 
 [node name="ColorRect2" type="ColorRect" parent="ChampiInside/Livre/Recette/Control"]
+visible = false
 margin_left = 139.0
 margin_top = 16.0
 margin_right = 163.0
@@ -364,6 +412,7 @@ margin_bottom = 40.0
 color = Color( 0.678431, 0.509804, 0.811765, 1 )
 
 [node name="ColorRect3" type="ColorRect" parent="ChampiInside/Livre/Recette/Control"]
+visible = false
 margin_left = 86.0
 margin_top = 28.0
 margin_right = 110.0
@@ -371,6 +420,7 @@ margin_bottom = 52.0
 color = Color( 0.803922, 0.235294, 0.478431, 1 )
 
 [node name="ColorRect4" type="ColorRect" parent="ChampiInside/Livre/Recette/Control"]
+visible = false
 margin_left = 180.0
 margin_top = 75.0
 margin_right = 204.0
@@ -429,6 +479,44 @@ texture = ExtResource( 15 )
 position = Vector2( -2, 34 )
 texture = ExtResource( 14 )
 
+[node name="Bouteilles" type="Node2D" parent="ChampiInside/Livre/Recette/Control"]
+
+[node name="BouteillePink" parent="ChampiInside/Livre/Recette/Control/Bouteilles" instance=ExtResource( 9 )]
+material = SubResource( 27 )
+position = Vector2( 92, 35 )
+scale = Vector2( 2, 2 )
+
+[node name="Sprite" parent="ChampiInside/Livre/Recette/Control/Bouteilles/BouteillePink" index="0"]
+rotation = -0.153073
+frame = 1
+
+[node name="BouteilleOrange" parent="ChampiInside/Livre/Recette/Control/Bouteilles" instance=ExtResource( 9 )]
+material = SubResource( 28 )
+position = Vector2( 59, 92 )
+scale = Vector2( 2, 2 )
+
+[node name="Sprite" parent="ChampiInside/Livre/Recette/Control/Bouteilles/BouteilleOrange" index="0"]
+rotation = 0.00324498
+frame = 3
+
+[node name="BouteilleGreen" parent="ChampiInside/Livre/Recette/Control/Bouteilles" instance=ExtResource( 9 )]
+material = SubResource( 29 )
+position = Vector2( 175, 83 )
+scale = Vector2( 2, 2 )
+
+[node name="Sprite" parent="ChampiInside/Livre/Recette/Control/Bouteilles/BouteilleGreen" index="0"]
+rotation = 0.0998307
+frame = 5
+
+[node name="BouteillePurple" parent="ChampiInside/Livre/Recette/Control/Bouteilles" instance=ExtResource( 9 )]
+material = SubResource( 30 )
+position = Vector2( 142, 24 )
+scale = Vector2( 2, 2 )
+
+[node name="Sprite" parent="ChampiInside/Livre/Recette/Control/Bouteilles/BouteillePurple" index="0"]
+rotation = -0.137016
+frame = 2
+
 [node name="Button" type="Button" parent="ChampiInside/Livre/Recette"]
 margin_right = 256.0
 margin_bottom = 256.0
@@ -439,9 +527,9 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
-autoplay = true
 
 [node name="Menu" parent="." instance=ExtResource( 18 )]
+visible = false
 
 [connection signal="pressed" from="ChampiInside/Livre" to="ChampiInside/Livre" method="_on_Livre_pressed"]
 [connection signal="pressed" from="ChampiInside/Livre/Recette/Button" to="ChampiInside/Livre" method="_on_Button_pressed"]
@@ -453,3 +541,7 @@ autoplay = true
 [editable path="ChampiInside/YSort/Ingredients/Framboises"]
 [editable path="ChampiInside/YSort/Ingredients/Miel"]
 [editable path="ChampiInside/YSort/Ingredients/Mirtilles"]
+[editable path="ChampiInside/Livre/Recette/Control/Bouteilles/BouteillePink"]
+[editable path="ChampiInside/Livre/Recette/Control/Bouteilles/BouteilleOrange"]
+[editable path="ChampiInside/Livre/Recette/Control/Bouteilles/BouteilleGreen"]
+[editable path="ChampiInside/Livre/Recette/Control/Bouteilles/BouteillePurple"]

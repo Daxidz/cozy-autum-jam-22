@@ -14,10 +14,14 @@ func _ready():
 
 
 func _on_Livre_pressed():
+	for b in $Recette/Control/Bouteilles.get_children():
+		b.get_node("AnimationPlayer").play("prepared")
 	recette.visible = !recette.visible
 
 
 func _on_Button_pressed():
+	for b in $Recette/Control/Bouteilles.get_children():
+		b.get_node("AnimationPlayer").stop()
 	recette.visible = !recette.visible
 
 func prepare_recettes_sprites(recettes):

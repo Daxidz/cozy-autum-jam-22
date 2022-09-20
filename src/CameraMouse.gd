@@ -17,6 +17,6 @@ func _process(delta):
 		if mouse_pos.y > viewport_dim.y / 2:
 			is_up = false
 	else: 
-		offset.y = lerp(offset.y , mouse_pos.y,  0.02)
+		offset.y = lerp(offset.y , min(mouse_pos.y, 112),  0.02)
 		if mouse_pos.y < viewport_dim.y / 4:
 			is_up = true
