@@ -15,12 +15,25 @@ onready var max_tables = $YSort/Tables.get_child_count()
 
 var cur_recette: String = ""
 
+func get_random_color():
+	return champi_couleurs[champi_couleurs.keys()[randi()%(champi_couleurs.size()-1)]]
+
 const RECETTES = { 
 					"orange": ["Miel", "Framboises"],
 					"purple": ["Mirtille", "Framboises"],
 					"pink": ["Framboises", "Framboises"],
 					"green": ["Mirtille", "Miel"] 
 				}
+
+func spawn_all():
+	var colors = [[],[]]
+	for i in 4:
+		colors[0] = get_random_color()
+		colors[1] = get_random_color()
+		while colors[0] == colors[1]:
+			colors[1] = get_random_color()
+		spawn_champi(colors[0])
+		spawn_champi(colors[1])
 
 func _ready():
 	randomize()
@@ -31,21 +44,20 @@ func _ready():
 	for table in $YSort/Tables.get_children():
 		table.connect("champi_matched", self, "_on_Champis_matched")
 		
-	for i in 8:
-			spawn_champi()
+	spawn_all()
 
 const champi_couleurs = {
 						"pink":["c92e70", "9e2081"],
 						"green":["5d7668", "235a63"],
 						"orange":["ffb366", "ff5b4f"],
-						"purple":["ad82cf", "8455a9"]
+						"purple":["ad82cf", "8455a9"],
+						"bad":["814d6e", "533a44"],
 						}
 
-func spawn_champi():
+func spawn_champi(colors):
 	
 	if cur_table > max_tables: return
 	var champ = Champignon.instance()
-	var colors = champi_couleurs[champi_couleurs.keys()[randi()%champi_couleurs.size()]]
 	print(colors)
 	champ.set_colors(colors[0], colors[1])
 	champ.connect("clicked", self, "_on_Champi_clicked")
@@ -77,7 +89,10 @@ func _onChauderon_melanger():
 		list_ingredients.clear()
 		
 func _on_Champi_clicked(champi):
-	if cur_recette != "":
+	
+	if cur_recette == "bad":
+		champi.modulate = Color.green
+	elif cur_recette != "":
 		var new_colors = champi_couleurs[cur_recette]
 		champi.set_colors(new_colors[0], new_colors[1])
 		
@@ -85,6 +100,9 @@ func _on_Champi_clicked(champi):
 		cur_recette = ""
 		var table = champi.table
 		table.check_champis_color()
+		
+		
+	$YSort/Bouteille.empty()
 	
 		
 func check_recette(ingredients) -> int:
@@ -94,6 +112,8 @@ func check_recette(ingredients) -> int:
 	var ingredients_inv = ingredients.duplicate(true)
 	ingredients.invert()
 	
+	cur_recette = "bad"
+	
 	for recette in RECETTES:
 		
 		var ing = RECETTES[recette]
@@ -101,18 +121,16 @@ func check_recette(ingredients) -> int:
 			print(recette)
 			show_recette(recette)
 			cur_recette = recette
-			get_tree().call_group("champis", "make_selectable", true)
-			return 1
+			break
+			
+	get_tree().call_group("champis", "make_selectable", true)
+	$YSort/Bouteille.prepare(champi_couleurs[cur_recette])
 	return 0
 	
 func _on_Champis_matched(champis):
 	for c in champis:
 		c.emit_hearts()
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		for i in 8:
-			spawn_champi()
 			
 func show_recette(recette):
 	var rec = get_node("Livre/Recette/ColorRect/" + recette)

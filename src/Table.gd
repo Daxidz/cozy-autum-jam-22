@@ -28,7 +28,7 @@ func add_champi(champi):
 		path.add_child(champi)
 		var tween = get_tree().create_tween()
 		tween.tween_callback(champi, "walk")
-		tween.tween_property(path, "unit_offset", 1.0, 5)
+		tween.tween_property(path, "unit_offset", 1.0, rand_range(4, 6))
 		tween.tween_callback(champi, "idle")
 	else:
-		nb_champis == MAX_CHAMPI
+		nb_champis = MAX_CHAMPI
