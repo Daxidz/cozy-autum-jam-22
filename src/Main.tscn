@@ -306,10 +306,10 @@ position = Vector2( 68, 22 )
 [node name="Sprite" parent="ChampiInside/YSort/Ingredients/Miel" index="0"]
 texture = ExtResource( 15 )
 
-[node name="Mirtilles" parent="ChampiInside/Ingredients" instance=ExtResource( 12 )]
-position = Vector2( 123, 15 )
+[node name="Mirtilles" parent="ChampiInside/YSort/Ingredients" instance=ExtResource( 12 )]
+position = Vector2( 124, 15 )
 
-[node name="Sprite" parent="ChampiInside/Ingredients/Mirtilles" index="0"]
+[node name="Sprite" parent="ChampiInside/YSort/Ingredients/Mirtilles" index="0"]
 texture = ExtResource( 14 )
 
 [node name="Chauderon" parent="ChampiInside" instance=ExtResource( 11 )]
@@ -426,5 +426,6 @@ __meta__ = {
 [editable path="ChampiInside/YSort/Tables/Table2"]
 [editable path="ChampiInside/YSort/Tables/Table3"]
 [editable path="ChampiInside/YSort/Tables/Table4"]
-[editable path="ChampiInside/Ingredients/Miel"]
-[editable path="ChampiInside/Ingredients/Mirtilles"]
+[editable path="ChampiInside/YSort/Ingredients/Framboises"]
+[editable path="ChampiInside/YSort/Ingredients/Miel"]
+[editable path="ChampiInside/YSort/Ingredients/Mirtilles"]
