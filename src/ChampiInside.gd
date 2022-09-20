@@ -126,12 +126,24 @@ func _on_Champi_clicked(champi):
 		cur_recette = ""
 		var table = champi.table
 		table.check_champis_color()
+	
+	var finished = true
+	for t in get_node("YSort/Tables").get_children():
+		if !t.champis_same: 
+			finished = false
+			break
+	
+	if finished:
+		
+		get_tree().call_group("champis", "dance")
+		return
+		modulate = Color.yellow
 		
 		
 	$YSort/Bouteille.empty()
 	
 		
-func check_recette(ingredients) -> int:
+func check_recette(ingredients):
 	
 	var is_ok: bool = false
 	ingredients.invert()
@@ -151,7 +163,6 @@ func check_recette(ingredients) -> int:
 			
 	get_tree().call_group("champis", "make_selectable", true)
 	$YSort/Bouteille.prepare(champi_couleurs[cur_recette])
-	return 0
 	
 func _on_Champis_matched(champis):
 	for c in champis:

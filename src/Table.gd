@@ -4,6 +4,7 @@ signal champi_matched
 
 var nb_champis: int = 0
 const MAX_CHAMPI = 2
+var champis_same: bool = false
 
 func get_champis():
 	var champ1 = $YSort/Path1/PathFollow2D.get_child(0)
@@ -17,7 +18,10 @@ func check_champis_color():
 	var champs = get_champis()
 	
 	if champs[0].get_colors() == champs[1].get_colors():
+		champis_same = true
 		emit_signal("champi_matched", champs)
+	else:
+		champis_same = false
 
 func add_champi(champi):
 	nb_champis += 1

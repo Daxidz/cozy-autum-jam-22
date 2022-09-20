@@ -30,6 +30,9 @@ func idle():
 func walk():
 	$AnimationPlayer.play("walk")
 
+func dance():
+	$AnimationPlayer.play("dance")
+
 func _input(event):
 	if selected and event.is_action_pressed("click"):
 		emit_signal("clicked", self)
