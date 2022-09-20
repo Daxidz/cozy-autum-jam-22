@@ -18,9 +18,9 @@
 [ext_resource path="res://src/Table.tscn" type="PackedScene" id=16]
 
 [sub_resource type="NavigationPolygon" id=11]
-vertices = PoolVector2Array( 45, 37, 106, 20, 170, 23, 214, 50, 161, 55, 82, 54, 64, 52, 31, 48, 79, 72, 61, 72, 170, 73, 226, 64, 245, 91, 244, 173, 215, 218, 169, 244, 73, 243, 30, 220, 5, 186, 5, 131, 6, 79, 18, 64 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7 ), PoolIntArray( 6, 5, 8, 9 ), PoolIntArray( 10, 11, 12, 13, 14, 15, 16 ), PoolIntArray( 9, 8, 10, 16, 17, 18, 19, 20 ), PoolIntArray( 9, 20, 21 ) ]
-outlines = [ PoolVector2Array( 79, 72, 82, 54, 161, 55, 214, 50, 170, 23, 106, 20, 45, 37, 31, 48, 64, 52, 61, 72, 18, 64, 6, 79, 5, 131, 5, 186, 30, 220, 73, 243, 169, 244, 215, 218, 244, 173, 245, 91, 226, 64, 170, 73 ) ]
+vertices = PoolVector2Array( 65, 47, 39, 42, 45, 37, 72, 25, 106, 20, 170, 23, 206, 45, 178, 50, 90, 50 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7, 8 ) ]
+outlines = [ PoolVector2Array( 90, 50, 178, 50, 206, 45, 170, 23, 106, 20, 72, 25, 45, 37, 39, 42, 65, 47 ) ]
 
 [sub_resource type="CapsuleShape2D" id=10]
 radius = 3.0
@@ -193,7 +193,7 @@ script = ExtResource( 3 )
 navpoly = SubResource( 11 )
 
 [node name="Barista" type="KinematicBody2D" parent="ChampiInside/YSort"]
-position = Vector2( 130, 90 )
+position = Vector2( 144, 40 )
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true
@@ -297,23 +297,23 @@ position = Vector2( -49, 40 )
 position = Vector2( 100, 48 )
 z_index = 1
 
-[node name="Chauderon" parent="ChampiInside" instance=ExtResource( 11 )]
+[node name="Ingredients" type="Node2D" parent="ChampiInside/YSort"]
 
-[node name="Ingredients" type="Node2D" parent="ChampiInside"]
+[node name="Framboises" parent="ChampiInside/YSort/Ingredients" instance=ExtResource( 12 )]
 
-[node name="Framboises" parent="ChampiInside/Ingredients" instance=ExtResource( 12 )]
-
-[node name="Miel" parent="ChampiInside/Ingredients" instance=ExtResource( 12 )]
+[node name="Miel" parent="ChampiInside/YSort/Ingredients" instance=ExtResource( 12 )]
 position = Vector2( 68, 22 )
 
-[node name="Sprite" parent="ChampiInside/Ingredients/Miel" index="0"]
+[node name="Sprite" parent="ChampiInside/YSort/Ingredients/Miel" index="0"]
 texture = ExtResource( 15 )
 
-[node name="Mirtille" parent="ChampiInside/Ingredients" instance=ExtResource( 12 )]
+[node name="Mirtille" parent="ChampiInside/YSort/Ingredients" instance=ExtResource( 12 )]
 position = Vector2( 123, 15 )
 
-[node name="Sprite" parent="ChampiInside/Ingredients/Mirtille" index="0"]
+[node name="Sprite" parent="ChampiInside/YSort/Ingredients/Mirtille" index="0"]
 texture = ExtResource( 14 )
+
+[node name="Chauderon" parent="ChampiInside" instance=ExtResource( 11 )]
 
 [node name="SpawnPosition" type="Position2D" parent="ChampiInside"]
 position = Vector2( 119, 240 )
@@ -427,5 +427,5 @@ __meta__ = {
 [editable path="ChampiInside/YSort/Tables/Table2"]
 [editable path="ChampiInside/YSort/Tables/Table3"]
 [editable path="ChampiInside/YSort/Tables/Table4"]
-[editable path="ChampiInside/Ingredients/Miel"]
-[editable path="ChampiInside/Ingredients/Mirtille"]
+[editable path="ChampiInside/YSort/Ingredients/Miel"]
+[editable path="ChampiInside/YSort/Ingredients/Mirtille"]

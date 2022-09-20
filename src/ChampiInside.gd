@@ -38,7 +38,7 @@ func spawn_all():
 func _ready():
 	randomize()
 	$Chauderon.connect("melanger", self, "_onChauderon_melanger")
-	for ingredient in $Ingredients.get_children():
+	for ingredient in $YSort/Ingredients.get_children():
 		ingredient.connect("clicked", self, "_onIngredient_clicked")
 	
 	for table in $YSort/Tables.get_children():
