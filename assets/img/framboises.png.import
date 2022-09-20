@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/framboise.png-c2f3f544306ff68f5a75392cb0e625fd.stex"
+path="res://.import/framboises.png-876022d71726f3775bcc0169ca95c727.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/framboise.png"
-dest_files=[ "res://.import/framboise.png-c2f3f544306ff68f5a75392cb0e625fd.stex" ]
+source_file="res://assets/img/framboises.png"
+dest_files=[ "res://.import/framboises.png-876022d71726f3775bcc0169ca95c727.stex" ]
 
 [params]
 

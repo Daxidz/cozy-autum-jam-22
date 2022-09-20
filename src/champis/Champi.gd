@@ -10,7 +10,7 @@ var col_light: Color
 var col_dark: Color
 
 func emit_hearts():
-	$HeartPart.emitting = true
+	$AnimationPlayer.play("in_love")
 
 func get_colors():
 	return [col_light, col_dark]

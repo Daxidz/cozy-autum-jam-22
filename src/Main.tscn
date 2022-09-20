@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/img/bg.png" type="Texture" id=2]
 [ext_resource path="res://src/LevelNavigation.gd" type="Script" id=3]
 [ext_resource path="res://src/Livre.gd" type="Script" id=4]
-[ext_resource path="res://assets/img/framboise.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/framboises.png" type="Texture" id=5]
 [ext_resource path="res://assets/img/barista.png" type="Texture" id=6]
 [ext_resource path="res://assets/img/bar.png" type="Texture" id=7]
 [ext_resource path="res://src/barista/Barista.gd" type="Script" id=8]
@@ -175,7 +175,6 @@ centered = false
 [node name="CameraMouse" type="Camera2D" parent="ChampiInside"]
 position = Vector2( -128, 0 )
 current = true
-zoom = Vector2( 2, 2 )
 limit_left = 0
 limit_top = 0
 limit_right = 0
@@ -309,10 +308,10 @@ position = Vector2( 68, 22 )
 [node name="Sprite" parent="ChampiInside/Ingredients/Miel" index="0"]
 texture = ExtResource( 15 )
 
-[node name="Mirtille" parent="ChampiInside/Ingredients" instance=ExtResource( 12 )]
+[node name="Mirtilles" parent="ChampiInside/Ingredients" instance=ExtResource( 12 )]
 position = Vector2( 123, 15 )
 
-[node name="Sprite" parent="ChampiInside/Ingredients/Mirtille" index="0"]
+[node name="Sprite" parent="ChampiInside/Ingredients/Mirtilles" index="0"]
 texture = ExtResource( 14 )
 
 [node name="SpawnPosition" type="Position2D" parent="ChampiInside"]
@@ -428,4 +427,4 @@ __meta__ = {
 [editable path="ChampiInside/YSort/Tables/Table3"]
 [editable path="ChampiInside/YSort/Tables/Table4"]
 [editable path="ChampiInside/Ingredients/Miel"]
-[editable path="ChampiInside/Ingredients/Mirtille"]
+[editable path="ChampiInside/Ingredients/Mirtilles"]

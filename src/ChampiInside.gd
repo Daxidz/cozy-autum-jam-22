@@ -18,7 +18,31 @@ var cur_recette: String = ""
 func get_random_color():
 	return champi_couleurs[champi_couleurs.keys()[randi()%(champi_couleurs.size()-1)]]
 
-const RECETTES = { 
+const INGREDIENTS = ["miel", "framboises", "mirtilles"]
+
+func get_random_recette():
+	var recette = []
+	recette.push_back(INGREDIENTS[randi() % INGREDIENTS.size()])
+	recette.push_back(INGREDIENTS[randi() % INGREDIENTS.size()])
+	print(recette)
+	return recette
+
+func randomize_recettes():
+	var recettes = []
+
+	while recettes.size() < 4:
+		var recette = get_random_recette()
+		recette.sort()
+		print(recette)
+		if !recettes.has(recette):
+			recettes.push_back(recette)
+		
+	for r in RECETTES:
+		RECETTES[r] = recettes.pop_back()
+		
+	print(RECETTES)
+
+var RECETTES = { 
 					"orange": ["Miel", "Framboises"],
 					"purple": ["Mirtille", "Framboises"],
 					"pink": ["Framboises", "Framboises"],
@@ -45,6 +69,8 @@ func _ready():
 		table.connect("champi_matched", self, "_on_Champis_matched")
 		
 	spawn_all()
+	randomize_recettes()
+	$Livre.prepare_recettes_sprites(RECETTES)
 
 const champi_couleurs = {
 						"pink":["c92e70", "9e2081"],
