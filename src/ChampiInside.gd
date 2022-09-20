@@ -15,6 +15,7 @@ onready var max_tables = $YSort/Tables.get_child_count()
 
 var cur_recette: String = ""
 
+
 func get_random_color():
 	return champi_couleurs[champi_couleurs.keys()[randi()%(champi_couleurs.size()-1)]]
 
@@ -117,16 +118,17 @@ func _onChauderon_melanger():
 func _on_Champi_clicked(champi):
 	
 	if cur_recette == "bad":
-		champi.modulate = Color.green
+		champi.set_colors(champi_couleurs[cur_recette][0], champi_couleurs[cur_recette][1])
+		champi.get_shooked()
 	elif cur_recette != "":
 		var new_colors = champi_couleurs[cur_recette]
 		champi.set_colors(new_colors[0], new_colors[1])
 		
-		get_tree().call_group("champis", "make_selectable", false)
 		cur_recette = ""
 		var table = champi.table
 		table.check_champis_color()
 	
+	get_tree().call_group("champis", "make_selectable", false)
 	var finished = true
 	for t in get_node("YSort/Tables").get_children():
 		if !t.champis_same: 
@@ -134,15 +136,10 @@ func _on_Champi_clicked(champi):
 			break
 	
 	if finished:
-		
 		get_tree().call_group("champis", "dance")
-		return
-		modulate = Color.yellow
-		
 		
 	$YSort/Bouteille.empty()
 	
-		
 func check_recette(ingredients):
 	
 	var is_ok: bool = false
@@ -167,6 +164,8 @@ func check_recette(ingredients):
 func _on_Champis_matched(champis):
 	for c in champis:
 		c.emit_hearts()
+		c.in_love = true
+		c.selectable = false
 
 			
 func show_recette(recette):

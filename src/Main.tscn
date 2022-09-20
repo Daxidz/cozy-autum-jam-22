@@ -119,49 +119,49 @@ start_node = "Idle"
 [sub_resource type="Curve2D" id=2]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -44, 122, 0, 0, 0, 0, -43, 13, 0, 0, 0, 0, -8, 2 )
+"points": PoolVector2Array( 0, 0, 0, 0, -44, 122, 0, 0, 0, 0, -43, 13, 0, 0, 0, 0, -18, 0 )
 }
 
 [sub_resource type="Curve2D" id=3]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -52, 131, 0, 0, 0, 0, -41, 41, 0, 0, 0, 0, 26, 33, 0, 0, 0, 0, 33, 0, 0, 0, 0, 0, 14, -12 )
+"points": PoolVector2Array( 0, 0, 0, 0, -52, 131, 0, 0, 0, 0, -41, 41, 0, 0, 0, 0, 26, 33, 0, 0, 0, 0, 33, 0, 0, 0, 0, 0, 14, -19 )
 }
 
 [sub_resource type="Curve2D" id=4]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 55, 49, 0, 0, 0, 0, 37, 24, 0, 0, 0, 0, -2, 20, 0, 0, 0, 0, -14, -9 )
+"points": PoolVector2Array( 0, 0, 0, 0, 55, 49, 0, 0, 0, 0, 37, 24, 0, 0, 0, 0, -2, 20, 0, 0, 0, 0, -20, -6 )
 }
 
 [sub_resource type="Curve2D" id=5]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 46, 62, 0, 0, 0, 0, 38, 4, 0, 0, 0, 0, 19, -4 )
+"points": PoolVector2Array( 0, 0, 0, 0, 46, 62, 0, 0, 0, 0, 38, 4, 0, 0, 0, 0, 28, -6 )
 }
 
 [sub_resource type="Curve2D" id=6]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 70, 116, 0, 0, 0, 0, 53, 34, 0, 0, 0, 0, 6, 28, 0, 0, 0, 0, -7, 0 )
+"points": PoolVector2Array( 0, 0, 0, 0, 70, 116, 0, 0, 0, 0, 53, 34, 0, 0, 0, 0, 6, 28, 0, 0, 0, 0, -5, 9 )
 }
 
 [sub_resource type="Curve2D" id=7]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 81, 129, 0, 0, 0, 0, 72, -5, 0, 0, 0, 0, 14, -11 )
+"points": PoolVector2Array( 0, 0, 0, 0, 81, 129, 0, 0, 0, 0, 72, -5, 0, 0, 0, 0, 19, -16 )
 }
 
 [sub_resource type="Curve2D" id=8]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -44, 29, 0, 0, 0, 0, -23, 10, 0, 0, 0, 0, 2, 11 )
+"points": PoolVector2Array( 0, 0, 0, 0, -44, 29, 0, 0, 0, 0, -23, 10, 0, 0, 0, 0, -5, 12 )
 }
 
 [sub_resource type="Curve2D" id=9]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -49, 40, 0, 0, 0, 0, -39, -9, 0, 0, 0, 0, -8, -25, 0, 0, 0, 0, 7, -13 )
+"points": PoolVector2Array( 0, 0, 0, 0, -49, 40, 0, 0, 0, 0, -39, -9, 0, 0, 0, 0, -8, -25, 0, 0, 0, 0, 15, -19 )
 }
 
 [node name="Main" type="Node2D"]
@@ -247,6 +247,9 @@ curve = SubResource( 3 )
 
 [node name="PathFollow2D" parent="ChampiInside/YSort/Tables/Table1/YSort/Path1" index="0"]
 position = Vector2( -52, 131 )
+
+[node name="Sprite" parent="ChampiInside/YSort/Tables/Table1/YSort" index="2"]
+position = Vector2( -4, -2 )
 
 [node name="Table2" parent="ChampiInside/YSort/Tables" instance=ExtResource( 16 )]
 position = Vector2( 68, 188 )
