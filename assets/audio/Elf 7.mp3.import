@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Elf 7.mp3-f6533e6762b5a110e967af9ee8fbe607.mp3str" ]
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
