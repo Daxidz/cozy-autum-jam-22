@@ -163,6 +163,7 @@ func _onChauderon_reached():
 	has_ingredient = false
 	cur_ingredient = ""
 	$YSort/Barista.hide_ingredients()
+	$Sounds/ChauderonSound.play()
 	
 	if nb_ingredients_selected == MAX_INGREDIENTS:
 		$Sounds/ChauderonSound.play()
