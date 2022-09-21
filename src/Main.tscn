@@ -309,6 +309,7 @@ centered = false
 offset = Vector2( -94, -29 )
 
 [node name="Tables" type="Node2D" parent="ChampiInside/YSort"]
+z_index = 1
 
 [node name="Table1" parent="ChampiInside/YSort/Tables" instance=ExtResource( 16 )]
 position = Vector2( 182, 115 )
