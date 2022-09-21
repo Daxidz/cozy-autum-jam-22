@@ -17,6 +17,9 @@ var cur_recette: String = ""
 
 var can_serve: bool = false
 
+var has_ingredient: bool = false
+var cur_ingredient
+
 onready var bouteille = get_node("YSort/Bouteille")
 
 
@@ -69,14 +72,12 @@ func set_camera_enabled(enabled):
 
 
 func start_game():
-	
 	randomize()
-	$Chauderon.connect("melanger", self, "_onChauderon_melanger")
+	
 	$Chauderon.connect("reached", self, "_onChauderon_reached")
 	$YSort/Bar/Porte/Area2D.connect("body_entered", self, "_on_PorteBarArea_entered")
 	$YSort/Bar/Porte/Area2D.connect("body_exited", self, "_on_PorteBarArea_exited")
 	for ingredient in $YSort/Ingredients.get_children():
-		ingredient.connect("clicked", self, "_onIngredient_clicked")
 		ingredient.connect("reached", self, "_onIngredient_reached")
 	
 	for table in $YSort/Tables.get_children():
@@ -88,8 +89,7 @@ func start_game():
 	randomize_recettes()
 	$Livre.prepare_recettes_sprites(RECETTES)
 	
-#func _ready():
-#	start_game()
+	
 
 const champi_couleurs = {
 						"pink":["c92e70", "9e2081"],
@@ -105,7 +105,7 @@ func spawn_champi(colors):
 	var champ = Champignon.instance()
 	print(colors)
 	champ.set_colors(colors[0], colors[1])
-	champ.connect("clicked", self, "_on_Champi_clicked")
+	champ.connect("reached", self, "_on_Champi_reached")
 	var table
 	while true:
 		table = get_node("YSort/Tables/Table" + str(cur_table))
@@ -137,23 +137,16 @@ func _onIngredient_clicked(name: String):
 	if nb_ingredients_selected == MAX_INGREDIENTS:
 		$Chauderon.modulate = Color.red
 
-var has_ingredient: bool = false
-var cur_ingredient
+
 func _onIngredient_reached(ingredient_name):
+	if bouteille.is_prepared:
+		return
 	has_ingredient = true
 	cur_ingredient = ingredient_name.to_lower()
+	$Sounds/ClickIngr.play()
 	$YSort/Barista/Ingredient.texture = load("res://assets/img/" + ingredient_name + ".png")
 
-func _onChauderon_melanger():
-	return
-	if nb_ingredients_selected == MAX_INGREDIENTS:
-		$Sounds/Potion.play()
-		$Drops.play()
-		print(list_ingredients)
-		check_recette(list_ingredients)
-		nb_ingredients_selected = 0
-		list_ingredients.clear()
-		
+
 func _onChauderon_reached():
 	if not has_ingredient:
 		return
@@ -176,7 +169,10 @@ func _onChauderon_reached():
 		nb_ingredients_selected = 0
 		list_ingredients.clear()
 		
-func _on_Champi_clicked(champi):
+		
+func _on_Champi_reached(champi):
+	if not bouteille.is_prepared:
+		return
 	
 	if cur_recette == "bad":
 		champi.set_colors(champi_couleurs[cur_recette][0], champi_couleurs[cur_recette][1])
@@ -191,7 +187,7 @@ func _on_Champi_clicked(champi):
 		cur_recette = ""
 		var table = champi.table
 		table.check_champis_color()
-	
+		
 	get_tree().call_group("champis", "make_selectable", false)
 	var finished = true
 	for t in get_node("YSort/Tables").get_children():
@@ -204,6 +200,8 @@ func _on_Champi_clicked(champi):
 		$Sounds/Dance.play()
 		
 	bouteille.empty()
+		
+
 	
 func check_recette(ingredients):
 	

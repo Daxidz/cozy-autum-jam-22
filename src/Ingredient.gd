@@ -32,4 +32,7 @@ func _onArea2D_mouse_entered():
 
 func _on_Area2D_body_entered(body):
 	emit_signal("reached", name)
+
+
+func ingredient_sound():
 	$AudioStreamPlayer.play()

@@ -465,6 +465,7 @@ shader = ExtResource( 5 )
 shader_param/color_light = null
 shader_param/color_dark = null
 shader_param/outlined = false
+shader_param/cornered = false
 shader_param/line_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="CanvasItemMaterial" id=5]
@@ -570,6 +571,7 @@ stream = ExtResource( 7 )
 max_distance = 150.0
 
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
 [connection signal="timeout" from="InteractTimer" to="." method="_on_InteractTimer_timeout"]

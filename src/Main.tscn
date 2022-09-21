@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://src/CameraMouse.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/bg.png" type="Texture" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://assets/audio/Player_DrinkingSingleGulp.wav" type="AudioStream" id=30]
 [ext_resource path="res://assets/img/porte_bar.png" type="Texture" id=31]
 [ext_resource path="res://assets/audio/Elf 7.mp3" type="AudioStream" id=32]
+[ext_resource path="res://assets/audio/Click_04.wav" type="AudioStream" id=33]
 
 [sub_resource type="NavigationPolygon" id=11]
 vertices = PoolVector2Array( 69, 47, 43, 43, 72, 25, 106, 20, 170, 23, 202, 44, 178, 50, 95, 48 )
@@ -199,13 +200,13 @@ height = 6.0
 [sub_resource type="Curve2D" id=2]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -44, 122, 0, 0, 0, 0, -43, 13, 0, 0, 0, 0, -18, 0 )
+"points": PoolVector2Array( 0, 0, 0, 0, -44, 122, 0, 0, 0, 0, -43, 13, 0, 0, 0, 0, -6, 7 )
 }
 
 [sub_resource type="Curve2D" id=3]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -52, 131, 0, 0, 0, 0, -41, 41, 0, 0, 0, 0, 26, 33, 0, 0, 0, 0, 33, 0, 0, 0, 0, 0, 14, -19 )
+"points": PoolVector2Array( 0, 0, 0, 0, -52, 131, 0, 0, 0, 0, -41, 41, 0, 0, 0, 0, 26, 33, 0, 0, 0, 0, 33, 0, 0, 0, 0, 0, 4, -27 )
 }
 
 [sub_resource type="Curve2D" id=4]
@@ -223,13 +224,13 @@ _data = {
 [sub_resource type="Curve2D" id=6]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 70, 116, 0, 0, 0, 0, 53, 34, 0, 0, 0, 0, 6, 28, 0, 0, 0, 0, -5, 9 )
+"points": PoolVector2Array( 0, 0, 0, 0, 70, 116, 0, 0, 0, 0, 53, 34, 0, 0, 0, 0, -10, 26, 0, 0, 0, 0, -22, -20 )
 }
 
 [sub_resource type="Curve2D" id=7]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 81, 129, 0, 0, 0, 0, 72, -5, 0, 0, 0, 0, 19, -16 )
+"points": PoolVector2Array( 0, 0, 0, 0, 81, 129, 0, 0, 0, 0, 70, 17, 0, 0, 0, 0, 19, 16 )
 }
 
 [sub_resource type="Curve2D" id=8]
@@ -444,7 +445,7 @@ curve = SubResource( 5 )
 position = Vector2( 46, 62 )
 
 [node name="Table3" parent="ChampiInside/YSort/Tables" instance=ExtResource( 16 )]
-position = Vector2( 40, 116 )
+position = Vector2( 50, 114 )
 
 [node name="Path2" parent="ChampiInside/YSort/Tables/Table3/YSort" index="0"]
 curve = SubResource( 6 )
@@ -457,6 +458,10 @@ curve = SubResource( 7 )
 
 [node name="PathFollow2D" parent="ChampiInside/YSort/Tables/Table3/YSort/Path1" index="0"]
 position = Vector2( 81, 129 )
+
+[node name="Sprite" parent="ChampiInside/YSort/Tables/Table3/YSort" index="2"]
+position = Vector2( 0, 3 )
+z_index = -1
 
 [node name="Table4" parent="ChampiInside/YSort/Tables" instance=ExtResource( 16 )]
 position = Vector2( 171, 207 )
@@ -688,6 +693,9 @@ stream = ExtResource( 29 )
 stream = ExtResource( 30 )
 volume_db = 5.0
 pitch_scale = 2.0
+
+[node name="ClickIngr" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
+stream = ExtResource( 33 )
 
 [node name="BehindBarArea" type="Area2D" parent="ChampiInside"]
 

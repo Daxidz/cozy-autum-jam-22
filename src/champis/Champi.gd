@@ -1,6 +1,6 @@
 extends Sprite
 
-signal clicked
+signal reached
 
 var selected: bool = false
 var selectable: bool
@@ -69,11 +69,7 @@ func dance():
 	$AnimationPlayer.play("dance")
 	$InteractTimer.stop()
 	
-
-func _input(event):
-	if selected and event.is_action_pressed("click"):
-		emit_signal("clicked", self)
-		
+#
 func outline(outlined):
 	material.set_shader_param("corners", outlined)
 	material.set_shader_param("outlined", outlined)
@@ -114,5 +110,10 @@ func _on_AnimationPlayer_animation_started(anim_name):
 func _on_StepTimer_timeout():
 	$StepSound.pitch_scale = rand_range(0.3,1.4)
 	$StepSound.play()
+
+
+func _on_Area2D_body_entered(body):
+	if selectable:
+		emit_signal("reached", self)
 
 
