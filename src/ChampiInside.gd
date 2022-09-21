@@ -119,6 +119,8 @@ func _onIngredient_clicked(name: String):
 
 func _onChauderon_melanger():
 	if nb_ingredients_selected == MAX_INGREDIENTS:
+		$Potion.play()
+		$Drops.play()
 		check_recette(list_ingredients)		
 		nb_ingredients_selected = 0
 		list_ingredients.clear()
@@ -128,6 +130,7 @@ func _on_Champi_clicked(champi):
 	if cur_recette == "bad":
 		champi.set_colors(champi_couleurs[cur_recette][0], champi_couleurs[cur_recette][1])
 		champi.get_shooked()
+		$BadPotion.play()
 	elif cur_recette != "":
 		var new_colors = champi_couleurs[cur_recette]
 		champi.set_colors(new_colors[0], new_colors[1])
@@ -145,6 +148,7 @@ func _on_Champi_clicked(champi):
 	
 	if finished:
 		get_tree().call_group("champis", "dance")
+		$Dance.play()
 		
 	$YSort/Bouteille.empty()
 	

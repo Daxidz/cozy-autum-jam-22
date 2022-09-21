@@ -1,6 +1,7 @@
 extends TextureButton
 
 onready var recette = $Recette
+onready var page = $pageSound
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,12 +18,16 @@ func _on_Livre_pressed():
 	for b in $Recette/Control/Bouteilles.get_children():
 		b.get_node("AnimationPlayer").play("prepared")
 	recette.visible = !recette.visible
+	if !page.playing:
+		page.play()
 
 
 func _on_Button_pressed():
 	for b in $Recette/Control/Bouteilles.get_children():
 		b.get_node("AnimationPlayer").stop()
 	recette.visible = !recette.visible
+	if !page.playing:
+		page.play()
 
 func prepare_recettes_sprites(recettes):
 	for r in recettes:

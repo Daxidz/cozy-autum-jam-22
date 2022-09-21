@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://src/CameraMouse.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/bg.png" type="Texture" id=2]
@@ -21,6 +21,12 @@
 [ext_resource path="res://src/Main.gd" type="Script" id=19]
 [ext_resource path="res://assets/img/livre_hd.png" type="Texture" id=20]
 [ext_resource path="res://src/shaders/replace_cols.tres" type="Shader" id=21]
+[ext_resource path="res://assets/audio/Footsteps_Casual_NormalWood_04.ogg" type="AudioStream" id=22]
+[ext_resource path="res://assets/audio/Papers 3.mp3" type="AudioStream" id=23]
+[ext_resource path="res://assets/audio/Subtle_Spell_Whoosh_1.wav" type="AudioStream" id=24]
+[ext_resource path="res://assets/audio/Punch_Type_1_Heavier_v4.wav" type="AudioStream" id=25]
+[ext_resource path="res://assets/audio/Water_Droplet_1.wav" type="AudioStream" id=26]
+[ext_resource path="res://assets/audio/Elves.mp3" type="AudioStream" id=27]
 
 [sub_resource type="NavigationPolygon" id=11]
 vertices = PoolVector2Array( 65, 47, 39, 42, 45, 37, 72, 25, 106, 20, 170, 23, 206, 45, 178, 50, 90, 50 )
@@ -76,6 +82,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=14]
 resource_name = "Walk"
+length = 0.6
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -85,10 +92,28 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.35, 0.7, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -15.5, 15.5, 0.0 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("footstep")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 22 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 22 )
+} ],
+"times": PoolRealArray( 0.15, 0.4 )
 }
 
 [sub_resource type="AnimationNodeAnimation" id=15]
@@ -274,6 +299,9 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 20 )
 
+[node name="footstep" type="AudioStreamPlayer" parent="ChampiInside/YSort/Barista"]
+stream = ExtResource( 22 )
+
 [node name="Bar" type="Sprite" parent="ChampiInside/YSort"]
 position = Vector2( 120, 70 )
 texture = ExtResource( 7 )
@@ -381,6 +409,7 @@ stretch_mode = 2
 script = ExtResource( 4 )
 
 [node name="Recette" type="CanvasLayer" parent="ChampiInside/Livre"]
+visible = false
 
 [node name="ColorRect" type="TextureRect" parent="ChampiInside/Livre/Recette"]
 margin_left = 20.0
@@ -525,7 +554,24 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="pageSound" type="AudioStreamPlayer" parent="ChampiInside/Livre"]
+stream = ExtResource( 23 )
+
+[node name="Potion" type="AudioStreamPlayer" parent="ChampiInside"]
+stream = ExtResource( 24 )
+volume_db = -10.0
+pitch_scale = 1.5
+
+[node name="BadPotion" type="AudioStreamPlayer" parent="ChampiInside"]
+stream = ExtResource( 25 )
+
+[node name="Drops" type="AudioStreamPlayer" parent="ChampiInside"]
+stream = ExtResource( 26 )
+
+[node name="Dance" type="AudioStreamPlayer" parent="ChampiInside"]
+stream = ExtResource( 27 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
 
 [node name="Menu" parent="." instance=ExtResource( 18 )]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Footsteps_Casual_NormalWood_04.ogg-d53960b27e9a7daa70389c92a63d4c85.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/Footsteps_Casual_NormalWood_04.ogg"
+dest_files=[ "res://.import/Footsteps_Casual_NormalWood_04.ogg-d53960b27e9a7daa70389c92a63d4c85.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

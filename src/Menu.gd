@@ -19,6 +19,9 @@ func _input(event):
 func _on_Area2D_mouse_entered():
 	start_selected = true
 	$Sprite/Porte/AnimationPlayer.play("open_door")
+	#TODO Trim sound
+	if !$door.playing:
+		$door.play()
 
 
 func _on_Area2D_mouse_exited():

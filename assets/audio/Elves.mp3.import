@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Elves.mp3-471e756ddf65a9a83f895a413a6676f9.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Elves.mp3"
+dest_files=[ "res://.import/Elves.mp3-471e756ddf65a9a83f895a413a6676f9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
