@@ -15,6 +15,10 @@ onready var max_tables = $YSort/Tables.get_child_count()
 
 var cur_recette: String = ""
 
+var can_serve: bool = false
+
+onready var bouteille = get_node("YSort/Bouteille")
+
 
 func get_random_color():
 	return champi_couleurs[champi_couleurs.keys()[randi()%(champi_couleurs.size()-1)]]
@@ -68,11 +72,17 @@ func start_game():
 	
 	randomize()
 	$Chauderon.connect("melanger", self, "_onChauderon_melanger")
+	$Chauderon.connect("reached", self, "_onChauderon_reached")
+	$YSort/Bar/Porte/Area2D.connect("body_entered", self, "_on_PorteBarArea_entered")
+	$YSort/Bar/Porte/Area2D.connect("body_exited", self, "_on_PorteBarArea_exited")
 	for ingredient in $YSort/Ingredients.get_children():
 		ingredient.connect("clicked", self, "_onIngredient_clicked")
+		ingredient.connect("reached", self, "_onIngredient_reached")
 	
 	for table in $YSort/Tables.get_children():
 		table.connect("champi_matched", self, "_on_Champis_matched")
+	
+	bouteille.connect("reached", self, "_onBouteille_reached")
 		
 	spawn_all()
 	randomize_recettes()
@@ -106,22 +116,62 @@ func spawn_champi(colors):
 			break
 	table.add_champi(champ)
 
-func _onIngredient_clicked(name: String):
+
+func _onBouteille_reached():
 	
+	print("deddew")
+	if bouteille.is_prepared:
+		can_serve = true
+		bouteille.target = $YSort/Barista
+		$YSort/LevelNavigation/NavigationPolygonInstance.enabled = false
+		$YSort/LevelNavigation/NavOpen.enabled = true
+
+
+func _onIngredient_clicked(name: String):
+	return
 	if nb_ingredients_selected == MAX_INGREDIENTS: return
 	
 	nb_ingredients_selected += 1
-	print(name)
+	
 	list_ingredients.push_back(name)
 	if nb_ingredients_selected == MAX_INGREDIENTS:
 		$Chauderon.modulate = Color.red
-		
+
+var has_ingredient: bool = false
+var cur_ingredient
+func _onIngredient_reached(ingredient_name):
+	has_ingredient = true
+	cur_ingredient = ingredient_name.to_lower()
+	$YSort/Barista/Ingredient.texture = load("res://assets/img/" + ingredient_name + ".png")
 
 func _onChauderon_melanger():
+	return
 	if nb_ingredients_selected == MAX_INGREDIENTS:
 		$Potion.play()
 		$Drops.play()
-		check_recette(list_ingredients)		
+		print(list_ingredients)
+		check_recette(list_ingredients)
+		nb_ingredients_selected = 0
+		list_ingredients.clear()
+		
+func _onChauderon_reached():
+	if not has_ingredient:
+		return
+
+	if nb_ingredients_selected == MAX_INGREDIENTS: return
+	
+	list_ingredients.push_back(cur_ingredient)
+	
+	nb_ingredients_selected += 1
+	$YSort/Barista/Ingredient.texture = null
+	has_ingredient = false
+	cur_ingredient = ""
+	
+	if nb_ingredients_selected == MAX_INGREDIENTS:
+		print(list_ingredients)
+		$Potion.play()
+		$Drops.play()
+		check_recette(list_ingredients)
 		nb_ingredients_selected = 0
 		list_ingredients.clear()
 		
@@ -150,10 +200,11 @@ func _on_Champi_clicked(champi):
 		get_tree().call_group("champis", "dance")
 		$Dance.play()
 		
-	$YSort/Bouteille.empty()
+	bouteille.empty()
 	
 func check_recette(ingredients):
 	
+	print("ING" + str(ingredients))
 	var is_ok: bool = false
 	ingredients.invert()
 	var ingredients_inv = ingredients.duplicate(true)
@@ -183,3 +234,22 @@ func _on_Champis_matched(champis):
 func show_recette(recette):
 	var rec = get_node("Livre/Recette/Control/" + recette)
 	rec.visible = visible
+
+func _on_PorteBarArea_exited(body):
+	if can_serve:
+		$YSort/Bar/Porte.play("open", true)
+		
+func _on_PorteBarArea_entered(body):
+	if can_serve:
+		$YSort/Bar/Porte.play("open")
+		print("dede")
+
+
+func _on_BehindBarArea_area_entered(area):
+	if not bouteille.is_prepared and can_serve:
+		can_serve = false
+		bouteille.target = $BouteilleDefaultPos
+		
+		$YSort/LevelNavigation/NavOpen.enabled = false
+		$YSort/LevelNavigation/NavigationPolygonInstance.enabled = true
+		

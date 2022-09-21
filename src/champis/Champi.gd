@@ -101,5 +101,4 @@ func _on_InteractTimer_timeout():
 	var anim = $AnimationPlayer.current_animation
 	if anim != "shock" and anim != "in_love":
 		talk()
-		print("talk")
 		$InteractTimer.start(rand_range(1,5))
