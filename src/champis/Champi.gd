@@ -112,7 +112,7 @@ func _on_AnimationPlayer_animation_started(anim_name):
 
 
 func _on_StepTimer_timeout():
-	$StepSound.pitch_scale = rand_range(0.6,1.4)
+	$StepSound.pitch_scale = rand_range(0.3,1.4)
 	$StepSound.play()
 
 

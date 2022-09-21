@@ -381,8 +381,10 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 20 )
 
-[node name="footstep" type="AudioStreamPlayer" parent="ChampiInside/YSort/Barista"]
+[node name="footstep" type="AudioStreamPlayer2D" parent="ChampiInside/YSort/Barista"]
 stream = ExtResource( 22 )
+pitch_scale = 0.8
+max_distance = 200.0
 
 [node name="Ingredient" type="Sprite" parent="ChampiInside/YSort/Barista"]
 
@@ -561,8 +563,7 @@ margin_bottom = 99.0
 color = Color( 0.364706, 0.462745, 0.407843, 1 )
 
 [node name="orange" type="Node2D" parent="ChampiInside/Livre/Recette/Control"]
-visible = false
-position = Vector2( 89, 72 )
+position = Vector2( 89, 60 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Sprite" type="Sprite" parent="ChampiInside/Livre/Recette/Control/orange"]
@@ -574,8 +575,7 @@ position = Vector2( 32, 56 )
 texture = ExtResource( 5 )
 
 [node name="purple" type="Node2D" parent="ChampiInside/Livre/Recette/Control"]
-visible = false
-position = Vector2( 155, 34 )
+position = Vector2( 128, 34 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Sprite" type="Sprite" parent="ChampiInside/Livre/Recette/Control/purple"]
@@ -587,8 +587,7 @@ position = Vector2( 40, 16 )
 texture = ExtResource( 14 )
 
 [node name="pink" type="Node2D" parent="ChampiInside/Livre/Recette/Control"]
-visible = false
-position = Vector2( 58, 31 )
+position = Vector2( 63, 35 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Sprite" type="Sprite" parent="ChampiInside/Livre/Recette/Control/pink"]
@@ -600,8 +599,7 @@ position = Vector2( -2, 26 )
 texture = ExtResource( 5 )
 
 [node name="green" type="Node2D" parent="ChampiInside/Livre/Recette/Control"]
-visible = false
-position = Vector2( 155, 83 )
+position = Vector2( 170, 80 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Sprite" type="Sprite" parent="ChampiInside/Livre/Recette/Control/green"]
@@ -626,7 +624,7 @@ frame = 1
 
 [node name="BouteilleOrange" parent="ChampiInside/Livre/Recette/Control/Bouteilles" instance=ExtResource( 9 )]
 material = SubResource( 28 )
-position = Vector2( 59, 92 )
+position = Vector2( 60, 85 )
 scale = Vector2( 1.6, 1.6 )
 
 [node name="Sprite" parent="ChampiInside/Livre/Recette/Control/Bouteilles/BouteilleOrange" index="0"]
@@ -635,7 +633,7 @@ frame = 3
 
 [node name="BouteilleGreen" parent="ChampiInside/Livre/Recette/Control/Bouteilles" instance=ExtResource( 9 )]
 material = SubResource( 29 )
-position = Vector2( 146, 85 )
+position = Vector2( 152, 73 )
 scale = Vector2( 1.6, 1.6 )
 
 [node name="Sprite" parent="ChampiInside/Livre/Recette/Control/Bouteilles/BouteilleGreen" index="0"]
@@ -677,6 +675,8 @@ stream = ExtResource( 26 )
 
 [node name="Dance" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
 stream = ExtResource( 27 )
+volume_db = -2.0
+pitch_scale = 1.5
 
 [node name="No" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
 stream = ExtResource( 32 )
@@ -686,7 +686,7 @@ stream = ExtResource( 29 )
 
 [node name="Drink" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
 stream = ExtResource( 30 )
-volume_db = 2.0
+volume_db = 5.0
 pitch_scale = 2.0
 
 [node name="BehindBarArea" type="Area2D" parent="ChampiInside"]

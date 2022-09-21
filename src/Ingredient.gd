@@ -25,10 +25,11 @@ func _onArea2D_mouse_entered():
 	$Sprite.material.set_shader_param("cornered", true)
 	is_selected = true
 
-func _input(event):
-	if event.is_action_pressed("click") and is_selected:
-		emit_signal("clicked", name.to_lower())
+#func _input(event):
+#	if event.is_action_pressed("click") and is_selected:
+#		emit_signal("clicked", name.to_lower())
 
 
 func _on_Area2D_body_entered(body):
 	emit_signal("reached", name)
+	$AudioStreamPlayer.play()
