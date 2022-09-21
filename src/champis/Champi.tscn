@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/shaders/replace_cols.tres" type="Shader" id=1]
 [ext_resource path="res://assets/img/champi.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/img/coeur.png" type="Texture" id=4]
 [ext_resource path="res://src/shaders/outline.tres" type="Shader" id=5]
 [ext_resource path="res://assets/img/eyes.png" type="Texture" id=6]
+[ext_resource path="res://assets/audio/Footsteps_Casual_NormalWood_04.ogg" type="AudioStream" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -537,6 +538,7 @@ shape = SubResource( 4 )
 [node name="HeartPart" type="Particles2D" parent="."]
 material = SubResource( 5 )
 position = Vector2( 0, -6 )
+emitting = false
 amount = 10
 randomness = 0.73
 local_coords = false
@@ -547,7 +549,7 @@ texture = ExtResource( 4 )
 position = Vector2( -1, 8 )
 texture = ExtResource( 6 )
 hframes = 5
-frame = 2
+frame = 3
 
 [node name="ShockPart" type="Particles2D" parent="."]
 emitting = false
@@ -561,6 +563,13 @@ process_material = SubResource( 17 )
 [node name="InteractTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="StepTimer" type="Timer" parent="."]
+
+[node name="StepSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
 [connection signal="timeout" from="InteractTimer" to="." method="_on_InteractTimer_timeout"]
+[connection signal="timeout" from="StepTimer" to="." method="_on_StepTimer_timeout"]

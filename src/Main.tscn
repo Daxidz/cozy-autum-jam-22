@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://src/CameraMouse.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/bg.png" type="Texture" id=2]
@@ -28,12 +28,15 @@
 [ext_resource path="res://assets/audio/Water_Droplet_1.wav" type="AudioStream" id=26]
 [ext_resource path="res://assets/audio/Elves.mp3" type="AudioStream" id=27]
 [ext_resource path="res://src/shaders/outline.tres" type="Shader" id=28]
-[ext_resource path="res://assets/img/porte_bar.png" type="Texture" id=29]
+[ext_resource path="res://assets/audio/collision_metal_soft_01.wav" type="AudioStream" id=29]
+[ext_resource path="res://assets/audio/Player_DrinkingSingleGulp.wav" type="AudioStream" id=30]
+[ext_resource path="res://assets/img/porte_bar.png" type="Texture" id=31]
+[ext_resource path="res://assets/audio/Elf 7.mp3" type="AudioStream" id=32]
 
 [sub_resource type="NavigationPolygon" id=11]
-vertices = PoolVector2Array( 65, 47, 39, 42, 45, 37, 72, 25, 106, 20, 170, 23, 206, 45, 178, 50, 90, 50 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7, 8 ) ]
-outlines = [ PoolVector2Array( 90, 50, 178, 50, 206, 45, 170, 23, 106, 20, 72, 25, 45, 37, 39, 42, 65, 47 ) ]
+vertices = PoolVector2Array( 69, 47, 43, 43, 72, 25, 106, 20, 170, 23, 202, 44, 178, 50, 95, 48 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7 ) ]
+outlines = [ PoolVector2Array( 95, 48, 178, 50, 202, 44, 170, 23, 106, 20, 72, 25, 43, 43, 69, 47 ) ]
 
 [sub_resource type="NavigationPolygon" id=43]
 vertices = PoolVector2Array( 74, 22, 130, 18, 177, 24, 209, 45, 188, 47, 87, 48, 63, 47, 40, 42, 75, 70, 57, 56, 194, 69, 218, 58, 235, 83, 244, 144, 16, 77, 30, 52, 50, 57, 12, 97, 227, 193, 197, 222, 70, 228, 25, 191, 5, 130 )
@@ -42,7 +45,7 @@ outlines = [ PoolVector2Array( 40, 42, 63, 47, 57, 56, 50, 57, 30, 52, 16, 77, 1
 
 [sub_resource type="CapsuleShape2D" id=10]
 radius = 3.0
-height = 2.0
+height = 0.0
 
 [sub_resource type="Animation" id=12]
 resource_name = "Idle"
@@ -152,28 +155,28 @@ start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=20]
 
-[sub_resource type="AtlasTexture" id=34]
-atlas = ExtResource( 29 )
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 31 )
 region = Rect2( 0, 0, 55, 31 )
 
-[sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 29 )
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 31 )
 region = Rect2( 55, 0, 55, 31 )
 
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 29 )
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 31 )
 region = Rect2( 110, 0, 55, 31 )
 
-[sub_resource type="AtlasTexture" id=37]
-atlas = ExtResource( 29 )
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 31 )
 region = Rect2( 165, 0, 55, 31 )
 
-[sub_resource type="AtlasTexture" id=38]
-atlas = ExtResource( 29 )
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 31 )
 region = Rect2( 220, 0, 55, 31 )
 
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 29 )
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 31 )
 region = Rect2( 275, 0, 55, 31 )
 
 [sub_resource type="SpriteFrames" id=40]
@@ -183,15 +186,15 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ) ],
 "loop": false,
 "name": "open",
 "speed": 10.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=41]
-radius = 20.0
-height = 0.0
+radius = 16.0
+height = 6.0
 
 [sub_resource type="Curve2D" id=2]
 resource_local_to_scene = true
@@ -255,7 +258,7 @@ resource_local_to_scene = true
 shader = ExtResource( 28 )
 shader_param/color_light = null
 shader_param/color_dark = null
-shader_param/outlined = false
+shader_param/outlined = true
 shader_param/cornered = false
 shader_param/line_color = Color( 1, 1, 1, 1 )
 
@@ -264,7 +267,7 @@ resource_local_to_scene = true
 shader = ExtResource( 28 )
 shader_param/color_light = null
 shader_param/color_dark = null
-shader_param/outlined = false
+shader_param/outlined = true
 shader_param/cornered = false
 shader_param/line_color = Color( 1, 1, 1, 1 )
 
@@ -273,7 +276,7 @@ resource_local_to_scene = true
 shader = ExtResource( 28 )
 shader_param/color_light = null
 shader_param/color_dark = null
-shader_param/outlined = false
+shader_param/outlined = true
 shader_param/cornered = false
 shader_param/line_color = Color( 1, 1, 1, 1 )
 
@@ -314,7 +317,8 @@ shader_param/corners = false
 shader_param/line_color = Color( 0.678431, 0.509804, 0.811765, 1 )
 
 [sub_resource type="CapsuleShape2D" id=42]
-height = 4.0
+radius = 1.11542
+height = 25.1521
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 19 )
@@ -349,21 +353,17 @@ navpoly = SubResource( 43 )
 enabled = false
 
 [node name="Barista" type="KinematicBody2D" parent="ChampiInside/YSort"]
-position = Vector2( 144, 40 )
+position = Vector2( 146, 41 )
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="ChampiInside/YSort/Barista"]
-position = Vector2( -5, -4 )
+position = Vector2( 2, -10 )
 texture = ExtResource( 6 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChampiInside/YSort/Barista"]
-position = Vector2( -7, 7 )
 rotation = 1.5708
 shape = SubResource( 10 )
 one_way_collision_margin = 0.0
@@ -402,7 +402,7 @@ centered = false
 position = Vector2( 27, 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChampiInside/YSort/Bar/Porte/Area2D"]
-position = Vector2( -11, 16 )
+position = Vector2( -15, 20 )
 shape = SubResource( 41 )
 
 [node name="Tables" type="Node2D" parent="ChampiInside/YSort"]
@@ -504,12 +504,13 @@ position = Vector2( 130, 35 )
 position = Vector2( 119, 240 )
 
 [node name="Livre" type="TextureButton" parent="ChampiInside"]
-margin_left = 154.0
-margin_top = 36.0
-margin_right = 200.0
-margin_bottom = 58.0
+margin_left = 149.0
+margin_top = 40.0
+margin_right = 195.0
+margin_bottom = 59.0
 texture_normal = ExtResource( 10 )
 stretch_mode = 2
+flip_h = true
 script = ExtResource( 4 )
 
 [node name="Recette" type="CanvasLayer" parent="ChampiInside/Livre"]
@@ -661,24 +662,38 @@ __meta__ = {
 [node name="pageSound" type="AudioStreamPlayer" parent="ChampiInside/Livre"]
 stream = ExtResource( 23 )
 
-[node name="Potion" type="AudioStreamPlayer" parent="ChampiInside"]
+[node name="Sounds" type="Node2D" parent="ChampiInside"]
+
+[node name="Potion" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
 stream = ExtResource( 24 )
 volume_db = -10.0
 pitch_scale = 1.5
 
-[node name="BadPotion" type="AudioStreamPlayer" parent="ChampiInside"]
+[node name="BadPotion" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
 stream = ExtResource( 25 )
 
-[node name="Drops" type="AudioStreamPlayer" parent="ChampiInside"]
+[node name="Drops" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
 stream = ExtResource( 26 )
 
-[node name="Dance" type="AudioStreamPlayer" parent="ChampiInside"]
+[node name="Dance" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
 stream = ExtResource( 27 )
+
+[node name="No" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
+stream = ExtResource( 32 )
+
+[node name="ChauderonSound" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
+stream = ExtResource( 29 )
+
+[node name="Drink" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
+stream = ExtResource( 30 )
+volume_db = 2.0
+pitch_scale = 2.0
 
 [node name="BehindBarArea" type="Area2D" parent="ChampiInside"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChampiInside/BehindBarArea"]
-position = Vector2( 98, 34 )
+position = Vector2( 98, 31 )
+rotation = -0.55188
 shape = SubResource( 42 )
 
 [node name="BouteilleDefaultPos" type="Position2D" parent="ChampiInside"]
@@ -686,6 +701,7 @@ position = Vector2( 116, 48 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
+autoplay = true
 
 [node name="Menu" parent="." instance=ExtResource( 18 )]
 visible = false

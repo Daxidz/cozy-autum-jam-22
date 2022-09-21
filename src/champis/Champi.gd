@@ -102,3 +102,17 @@ func _on_InteractTimer_timeout():
 	if anim != "shock" and anim != "in_love":
 		talk()
 		$InteractTimer.start(rand_range(1,5))
+
+
+func _on_AnimationPlayer_animation_started(anim_name):
+	if anim_name == "walk":
+		$StepTimer.start(0.22)
+	else:
+		$StepTimer.stop()
+
+
+func _on_StepTimer_timeout():
+	$StepSound.pitch_scale = rand_range(0.6,1.4)
+	$StepSound.play()
+
+

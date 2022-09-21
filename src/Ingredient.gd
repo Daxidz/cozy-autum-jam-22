@@ -11,16 +11,17 @@ onready var sprite_small = load("res://assets/img/" + name + ".png")
 func _ready():
 	$Area2D.connect("mouse_entered", self, "_onArea2D_mouse_entered")
 	$Area2D.connect("mouse_exited", self, "_onArea2D_mouse_mouse_exited")
+	$Sprite.material.set_shader_param("outlined", true)
 
 
 
 func _onArea2D_mouse_mouse_exited():
-	$Sprite.material.set_shader_param("outlined", false)
+#	$Sprite.material.set_shader_param("outlined", false)
 	$Sprite.material.set_shader_param("cornered", false)
 	is_selected = false
 
 func _onArea2D_mouse_entered():
-	$Sprite.material.set_shader_param("outlined", true)
+	print("ENTERED")
 	$Sprite.material.set_shader_param("cornered", true)
 	is_selected = true
 

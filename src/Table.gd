@@ -36,3 +36,13 @@ func add_champi(champi):
 		tween.tween_callback(champi, "idle")
 	else:
 		nb_champis = MAX_CHAMPI
+
+
+func _on_Table_champi_matched(_champs):
+	$Timer.start(0.3)
+
+
+func _on_Timer_timeout():
+	$AudioStreamPlayer2D.pitch_scale = rand_range(0.6,1.4)
+	$AudioStreamPlayer2D.play()
+	$Timer.start(rand_range(0.6,1.2))
