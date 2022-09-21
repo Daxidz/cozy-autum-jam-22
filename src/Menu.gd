@@ -18,12 +18,25 @@ func _input(event):
 
 func _on_Area2D_mouse_entered():
 	start_selected = true
-	$Sprite/Porte/AnimationPlayer.play("open_door")
-	#TODO Trim sound
-	if !$door.playing:
+	if !$Sprite/Porte/AnimationPlayer.is_playing():
 		$door.play()
+	$Sprite/Porte/AnimationPlayer.play("open_door")
+	
+	
 
 
 func _on_Area2D_mouse_exited():
 	start_selected = false
 	$Sprite/Porte/AnimationPlayer.play_backwards("open_door")
+
+
+func _on_CloseBook_pressed():
+	if !$Book.playing:
+		$Book.play()
+	$CanvasLayer.visible = !$CanvasLayer.visible
+
+
+func _on_Credits_pressed():
+	if !$Book.playing:
+		$Book.play()
+	$CanvasLayer.visible = !$CanvasLayer.visible

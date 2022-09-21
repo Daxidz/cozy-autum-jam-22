@@ -20,3 +20,4 @@ func _onArea2D_mouse_entered():
 func _input(event):
 	if event.is_action_pressed("click") and is_selected:
 		emit_signal("clicked", name.to_lower())
+		$AudioStreamPlayer.play()
