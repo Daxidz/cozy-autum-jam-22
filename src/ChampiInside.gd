@@ -138,13 +138,16 @@ func _onIngredient_clicked(name: String):
 		$Chauderon.modulate = Color.red
 
 
+
 func _onIngredient_reached(ingredient_name):
-	if bouteille.is_prepared:
+	if bouteille.is_prepared or can_serve:
 		return
 	has_ingredient = true
 	cur_ingredient = ingredient_name.to_lower()
 	$Sounds/ClickIngr.play()
-	$YSort/Barista/Ingredient.texture = load("res://assets/img/" + ingredient_name + ".png")
+	$YSort/Barista.hide_ingredients()
+	$YSort/Barista.show_ingredient(cur_ingredient)
+	
 
 
 func _onChauderon_reached():
@@ -156,9 +159,10 @@ func _onChauderon_reached():
 	list_ingredients.push_back(cur_ingredient)
 	
 	nb_ingredients_selected += 1
-	$YSort/Barista/Ingredient.texture = null
+	
 	has_ingredient = false
 	cur_ingredient = ""
+	$YSort/Barista.hide_ingredients()
 	
 	if nb_ingredients_selected == MAX_INGREDIENTS:
 		$Sounds/ChauderonSound.play()

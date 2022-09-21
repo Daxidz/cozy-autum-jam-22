@@ -387,7 +387,16 @@ stream = ExtResource( 22 )
 pitch_scale = 0.8
 max_distance = 200.0
 
-[node name="Ingredient" type="Sprite" parent="ChampiInside/YSort/Barista"]
+[node name="Ingredients" type="Node2D" parent="ChampiInside/YSort/Barista"]
+
+[node name="framboises" type="Sprite" parent="ChampiInside/YSort/Barista/Ingredients"]
+texture = ExtResource( 5 )
+
+[node name="mirtilles" type="Sprite" parent="ChampiInside/YSort/Barista/Ingredients"]
+texture = ExtResource( 14 )
+
+[node name="miel" type="Sprite" parent="ChampiInside/YSort/Barista/Ingredients"]
+texture = ExtResource( 15 )
 
 [node name="Bar" type="Sprite" parent="ChampiInside/YSort"]
 position = Vector2( 120, 70 )
@@ -568,6 +577,7 @@ margin_bottom = 99.0
 color = Color( 0.364706, 0.462745, 0.407843, 1 )
 
 [node name="orange" type="Node2D" parent="ChampiInside/Livre/Recette/Control"]
+visible = false
 position = Vector2( 89, 60 )
 scale = Vector2( 0.5, 0.5 )
 
@@ -580,6 +590,7 @@ position = Vector2( 32, 56 )
 texture = ExtResource( 5 )
 
 [node name="purple" type="Node2D" parent="ChampiInside/Livre/Recette/Control"]
+visible = false
 position = Vector2( 128, 34 )
 scale = Vector2( 0.5, 0.5 )
 
@@ -592,6 +603,7 @@ position = Vector2( 40, 16 )
 texture = ExtResource( 14 )
 
 [node name="pink" type="Node2D" parent="ChampiInside/Livre/Recette/Control"]
+visible = false
 position = Vector2( 63, 35 )
 scale = Vector2( 0.5, 0.5 )
 
@@ -604,6 +616,7 @@ position = Vector2( -2, 26 )
 texture = ExtResource( 5 )
 
 [node name="green" type="Node2D" parent="ChampiInside/Livre/Recette/Control"]
+visible = false
 position = Vector2( 170, 80 )
 scale = Vector2( 0.5, 0.5 )
 
