@@ -14,7 +14,7 @@ func _process(delta):
 
 
 func _unhandled_input(event):
-	if not event.is_action_pressed("click") or not can_move:
+	if not event is InputEventMouseButton or not can_move:
 		return
 	_update_navigation_path(character.position, get_local_mouse_position())
 

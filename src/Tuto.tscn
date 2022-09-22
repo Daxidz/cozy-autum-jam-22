@@ -1068,9 +1068,6 @@ anims/walk = SubResource( 14 )
 [node name="HeartPart" parent="ColorRect/Champi3" index="2"]
 emitting = true
 
-[node name="Eyes" parent="ColorRect/Champi3" index="3"]
-frame = 4
-
 [node name="Table2" parent="ColorRect" instance=ExtResource( 8 )]
 position = Vector2( 177, 89 )
 
@@ -1092,9 +1089,6 @@ anims/walk = SubResource( 22 )
 
 [node name="HeartPart" parent="ColorRect/Champi4" index="2"]
 emitting = true
-
-[node name="Eyes" parent="ColorRect/Champi4" index="3"]
-frame = 4
 
 [node name="Champi" parent="ColorRect" instance=ExtResource( 6 )]
 material = SubResource( 4 )

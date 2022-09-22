@@ -49,5 +49,6 @@ func _on_TutoButton_pressed():
 
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
-	if event.is_action_pressed("click"):
+#	if event.is_action_pressed("click") or if event.is:
+	if ((event is InputEventMouseButton) and (event.pressed == true)):
 		emit_signal("start_game_clicked")
