@@ -88,7 +88,6 @@ text = "^"
 align = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Sprite2" type="Sprite" parent="CanvasLayer"]
 position = Vector2( 26, 6 )
@@ -108,6 +107,7 @@ margin_top = 30.0
 margin_right = 128.0
 margin_bottom = 129.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/line_spacing = 0
 custom_fonts/font = SubResource( 5 )
 text = "Code: 
 astonedf & Dax
@@ -117,16 +117,19 @@ Jess & Dax
 "
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
-margin_left = 154.0
-margin_top = 23.0
-margin_right = 219.0
-margin_bottom = 140.0
+margin_left = 147.0
+margin_top = 18.0
+margin_right = 212.0
+margin_bottom = 138.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/line_spacing = 0
 custom_fonts/font = SubResource( 5 )
 text = "Sounds:
 From bundles
+
 Music:
 astonedf
+
 Cover Art: 
 Sar
 
@@ -145,7 +148,7 @@ margin_right = 71.0
 margin_bottom = 83.0
 focus_mode = 0
 custom_colors/font_color = Color( 1, 1, 0.882353, 1 )
-custom_colors/font_color_hover = Color( 0.364706, 0.462745, 0.407843, 1 )
+custom_colors/font_color_hover = Color( 0.494118, 0.592157, 0.439216, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Tutorial"
 flat = true
