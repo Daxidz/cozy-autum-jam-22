@@ -7,8 +7,13 @@ var target = null
 
 signal reached
 
+export var empty_at_start: bool = true
+
 func _ready():
-	empty()
+	if empty_at_start:
+		empty()
+	else:
+		$AnimationPlayer.play("prepared")
 	
 func empty():
 	$AnimationPlayer.play("empty")
@@ -28,3 +33,4 @@ func _on_Area2D_body_entered(body):
 func _physics_process(delta):
 	if target:
 		global_position = lerp(global_position, target.global_position, 0.5)
+

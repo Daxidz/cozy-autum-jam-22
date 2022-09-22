@@ -12,3 +12,4 @@ func _on_Menu_start_game_clicked():
 	$ChampiInside.visible = true
 	$ChampiInside.start_game()
 	$ChampiInside.set_camera_enabled(true)
+	

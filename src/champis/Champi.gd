@@ -10,6 +10,8 @@ var col_light: Color
 var col_dark: Color
 var in_love: bool = false
 
+export var auto_start_talk: bool = true
+
 var time_talk = 7
 
 enum EYES { HAPPY, CLASSIC, SHOOKED, BLASE, VERY_HAPPY }
@@ -54,7 +56,8 @@ func set_colors(light, dark):
 	material.set_shader_param("color_dark", Color(dark))
 
 func _ready():
-	$InteractTimer.start(rand_range(7,9))
+	if auto_start_talk:
+		$InteractTimer.start(rand_range(7,9))
 	selectable = false
 
 func idle():
@@ -86,6 +89,7 @@ func _on_Area2D_mouse_entered():
 		$AnimationPlayer.play("selected")
 
 func _on_Area2D_mouse_exited():
+	if not auto_start_talk: return
 	selected = false
 	outline(false)
 	var anim = $AnimationPlayer.current_animation

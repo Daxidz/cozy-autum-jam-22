@@ -4,6 +4,8 @@ extends Navigation2D
 export(float) var character_speed = 40.0
 var path = []
 
+var can_move: bool = false
+
 onready var character = get_node("../Barista")
 
 func _process(delta):
@@ -12,7 +14,7 @@ func _process(delta):
 
 
 func _unhandled_input(event):
-	if not event.is_action_pressed("click"):
+	if not event.is_action_pressed("click") or not can_move:
 		return
 	_update_navigation_path(character.position, get_local_mouse_position())
 

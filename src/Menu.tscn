@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/img/porte.png" type="Texture" id=1]
 [ext_resource path="res://assets/img/mockup_menu.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/img/livre_hd.png" type="Texture" id=6]
 [ext_resource path="res://assets/renner/Renner_ 400 Book.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/audio/Papers 3.mp3" type="AudioStream" id=8]
+[ext_resource path="res://src/Tuto.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 11.0
@@ -87,6 +88,7 @@ text = "^"
 align = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Sprite2" type="Sprite" parent="CanvasLayer"]
 position = Vector2( 26, 6 )
@@ -108,10 +110,10 @@ margin_bottom = 125.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "Code: 
-Saraa & David
+Saraa & Dax
 
 Art: 
-Jess & David
+Jess & Dax
 "
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
@@ -135,7 +137,22 @@ __meta__ = {
 [node name="Book" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 
+[node name="TutoButton" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 61.0
+margin_right = 71.0
+margin_bottom = 83.0
+custom_colors/font_color = Color( 1, 1, 0.882353, 1 )
+custom_colors/font_color_hover = Color( 0.137255, 0.352941, 0.388235, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Tutorial"
+flat = true
+
+[node name="Tuto" parent="." instance=ExtResource( 9 )]
+visible = false
+
 [connection signal="mouse_entered" from="Sprite/Porte/Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Sprite/Porte/Area2D" to="." method="_on_Area2D_mouse_exited"]
 [connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="CanvasLayer/CloseBook" to="." method="_on_CloseBook_pressed"]
+[connection signal="pressed" from="TutoButton" to="." method="_on_TutoButton_pressed"]

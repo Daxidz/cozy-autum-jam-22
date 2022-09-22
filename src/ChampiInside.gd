@@ -69,8 +69,9 @@ func spawn_all():
 func set_camera_enabled(enabled):
 	$CameraMouse.should_move = enabled
 
-
+var is_started: bool = false
 func start_game():
+	$YSort/LevelNavigation.can_move = true
 	randomize()
 	
 	$Chauderon.connect("reached", self, "_onChauderon_reached")

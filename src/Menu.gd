@@ -5,6 +5,8 @@ var enabled: bool = false
 
 var start_selected: bool = false
 
+signal exited
+
 
 
 func set_enabled(new_enabled):
@@ -40,3 +42,7 @@ func _on_Credits_pressed():
 	if !$Book.playing:
 		$Book.play()
 	$CanvasLayer.visible = !$CanvasLayer.visible
+
+
+func _on_TutoButton_pressed():
+	$Tuto.visible = !$Tuto.visible
