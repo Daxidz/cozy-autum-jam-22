@@ -118,10 +118,12 @@ func spawn_champi(colors):
 
 
 func _onBouteille_reached():
-	
-	print("deddew")
 	if bouteille.is_prepared:
 		can_serve = true
+		bouteille.hide_arrow()
+		
+		get_tree().call_group("champis", "make_selectable", true)
+		get_tree().call_group("champis", "show_arrow")
 		bouteille.target = $YSort/Barista
 		$YSort/LevelNavigation/NavigationPolygonInstance.enabled = false
 		$YSort/LevelNavigation/NavOpen.enabled = true
@@ -138,6 +140,7 @@ func _onIngredient_reached(ingredient_name):
 	$YSort/Barista.hide_ingredients()
 	$YSort/Barista.show_ingredient(cur_ingredient)
 	$Chauderon/Particles2D.emitting = true
+	$Chauderon.show_arrow()
 	
 
 
@@ -154,17 +157,18 @@ func _onChauderon_reached():
 	has_ingredient = false
 	cur_ingredient = ""
 	$Chauderon/Particles2D.emitting = false
+	$Chauderon.hide_arrow()
 	$YSort/Barista.hide_ingredients()
 	$Sounds/ChauderonSound.play()
 	
 	if nb_ingredients_selected == MAX_INGREDIENTS:
 		$Sounds/ChauderonSound.play()
-		print(list_ingredients)
 		$Sounds/Potion.play()
 		$Sounds/Drops.play()
 		check_recette(list_ingredients)
 		nb_ingredients_selected = 0
 		list_ingredients.clear()
+		bouteille.show_arrow()
 		
 		
 func _on_Champi_reached(champi):
@@ -189,6 +193,7 @@ func _on_Champi_reached(champi):
 		table.check_champis_color()
 		
 	get_tree().call_group("champis", "make_selectable", false)
+	get_tree().call_group("champis", "hide_arrow")
 	var finished = true
 	for t in get_node("YSort/Tables").get_children():
 		if !t.champis_same: 
@@ -223,7 +228,6 @@ func check_recette(ingredients):
 			cur_recette = recette
 			break
 			
-	get_tree().call_group("champis", "make_selectable", true)
 	$YSort/Bouteille.prepare(champi_couleurs[cur_recette])
 	
 func _on_Champis_matched(champis):
@@ -234,8 +238,9 @@ func _on_Champis_matched(champis):
 
 			
 func show_recette(recette):
-	var rec = get_node("Livre/Recette/Control/" + recette)
+	var rec = get_node("Livre/Recette/Control/" + recette + "/Ingredients")
 	rec.visible = visible
+	get_node("Livre/Recette/Control/" + recette + "/PointInt").visible = false
 
 func _on_PorteBarArea_exited(body):
 	if can_serve:
@@ -244,7 +249,6 @@ func _on_PorteBarArea_exited(body):
 func _on_PorteBarArea_entered(body):
 	if can_serve:
 		$YSort/Bar/Porte.play("open")
-		print("dede")
 
 
 func _on_BehindBarArea_area_entered(area):

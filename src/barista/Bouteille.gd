@@ -9,7 +9,14 @@ signal reached
 
 export var empty_at_start: bool = true
 
+
+func show_arrow():
+	$Fleche.visible = true
+func hide_arrow():
+	$Fleche.visible = false
+
 func _ready():
+	hide_arrow()
 	if empty_at_start:
 		empty()
 	else:

@@ -56,6 +56,7 @@ func set_colors(light, dark):
 	material.set_shader_param("color_dark", Color(dark))
 
 func _ready():
+	hide_arrow()
 	if auto_start_talk:
 		$InteractTimer.start(rand_range(7,9))
 	selectable = false
@@ -77,6 +78,13 @@ func outline(outlined):
 	material.set_shader_param("corners", outlined)
 	material.set_shader_param("outlined", outlined)
 
+
+func show_arrow():
+	if selectable:
+		$Fleche.visible = true
+func hide_arrow():
+	$Fleche.visible = false
+	
 
 func make_selectable(new_selectable: bool):
 	if not in_love:

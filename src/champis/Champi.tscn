@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/shaders/replace_cols.tres" type="Shader" id=1]
 [ext_resource path="res://assets/img/champi.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/shaders/outline.tres" type="Shader" id=5]
 [ext_resource path="res://assets/img/eyes.png" type="Texture" id=6]
 [ext_resource path="res://assets/audio/Footsteps_Casual_NormalWood_04.ogg" type="AudioStream" id=7]
+[ext_resource path="res://src/Fleche.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -569,6 +570,9 @@ one_shot = true
 [node name="StepSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
 max_distance = 150.0
+
+[node name="Fleche" parent="." instance=ExtResource( 8 )]
+position = Vector2( 0, -12 )
 
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
