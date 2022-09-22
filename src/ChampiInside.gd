@@ -170,6 +170,8 @@ func _onChauderon_reached():
 func _on_Champi_reached(champi):
 	if not bouteille.is_prepared:
 		return
+		
+	champi.get_node("AnimationPlayer").play("selected")
 	
 	if cur_recette == "bad":
 		champi.set_colors(champi_couleurs[cur_recette][0], champi_couleurs[cur_recette][1])

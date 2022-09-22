@@ -88,6 +88,7 @@ text = "^"
 align = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Sprite2" type="Sprite" parent="CanvasLayer"]
 position = Vector2( 26, 6 )
