@@ -87,7 +87,6 @@ text = "^"
 align = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Sprite2" type="Sprite" parent="CanvasLayer"]
 position = Vector2( 26, 6 )
@@ -102,14 +101,36 @@ focus_mode = 0
 flat = true
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-margin_left = 62.0
-margin_top = 28.0
-margin_right = 113.0
-margin_bottom = 44.0
+margin_left = 61.0
+margin_top = 26.0
+margin_right = 126.0
+margin_bottom = 125.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
-text = "Credits:
-TODO"
+text = "Code: 
+Saraa & David
+
+Art: 
+Jess & David
+"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+margin_left = 145.0
+margin_top = 24.0
+margin_right = 210.0
+margin_bottom = 140.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Sounds:
+TODO
+
+Cover Art: 
+Sar
+
+"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Book" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )

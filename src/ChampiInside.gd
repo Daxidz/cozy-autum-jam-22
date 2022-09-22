@@ -10,15 +10,14 @@ onready var Champignon = preload("res://src/champis/Champi.tscn")
 var list_ingredients = []
 
 const BASE_TABLE = 1
-var cur_table = BASE_TABLE
 onready var max_tables = $YSort/Tables.get_child_count()
+var cur_table = BASE_TABLE
 
 var cur_recette: String = ""
+var cur_ingredient
 
 var can_serve: bool = false
-
 var has_ingredient: bool = false
-var cur_ingredient
 
 onready var bouteille = get_node("YSort/Bouteille")
 
@@ -127,16 +126,6 @@ func _onBouteille_reached():
 		$YSort/LevelNavigation/NavOpen.enabled = true
 
 
-func _onIngredient_clicked(name: String):
-	return
-	if nb_ingredients_selected == MAX_INGREDIENTS: return
-	
-	nb_ingredients_selected += 1
-	
-	list_ingredients.push_back(name)
-	if nb_ingredients_selected == MAX_INGREDIENTS:
-		$Chauderon.modulate = Color.red
-
 
 
 func _onIngredient_reached(ingredient_name):
@@ -147,6 +136,7 @@ func _onIngredient_reached(ingredient_name):
 	$Sounds/ClickIngr.play()
 	$YSort/Barista.hide_ingredients()
 	$YSort/Barista.show_ingredient(cur_ingredient)
+	$Chauderon/Particles2D.emitting = true
 	
 
 
@@ -162,6 +152,7 @@ func _onChauderon_reached():
 	
 	has_ingredient = false
 	cur_ingredient = ""
+	$Chauderon/Particles2D.emitting = false
 	$YSort/Barista.hide_ingredients()
 	$Sounds/ChauderonSound.play()
 	

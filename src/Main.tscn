@@ -35,9 +35,9 @@
 [ext_resource path="res://assets/audio/Click_04.wav" type="AudioStream" id=33]
 
 [sub_resource type="NavigationPolygon" id=11]
-vertices = PoolVector2Array( 69, 47, 43, 43, 72, 25, 106, 20, 170, 23, 202, 44, 178, 50, 95, 48 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7 ) ]
-outlines = [ PoolVector2Array( 95, 48, 178, 50, 202, 44, 170, 23, 106, 20, 72, 25, 43, 43, 69, 47 ) ]
+vertices = PoolVector2Array( 117.224, 48.5355, 95, 48, 69, 47, 43, 43, 72, 25, 106, 20, 170, 23, 202, 44, 178, 50 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6 ), PoolIntArray( 6, 7, 8, 0 ) ]
+outlines = [ PoolVector2Array( 95, 48, 117.224, 48.5355, 178, 50, 202, 44, 170, 23, 106, 20, 72, 25, 43, 43, 69, 47 ) ]
 
 [sub_resource type="NavigationPolygon" id=43]
 vertices = PoolVector2Array( 74, 22, 130, 18, 177, 24, 209, 45, 188, 47, 87, 48, 63, 47, 40, 42, 75, 70, 57, 56, 194, 69, 218, 58, 235, 83, 244, 144, 16, 77, 30, 52, 50, 57, 12, 97, 227, 193, 197, 222, 70, 228, 25, 191, 5, 130 )
@@ -427,7 +427,7 @@ position = Vector2( 182, 115 )
 curve = SubResource( 2 )
 
 [node name="PathFollow2D" parent="ChampiInside/YSort/Tables/Table1/YSort/Path2" index="0"]
-position = Vector2( -26.201, 4.26452 )
+position = Vector2( -23.5917, 9.85271 )
 
 [node name="Path1" parent="ChampiInside/YSort/Tables/Table1/YSort" index="1"]
 curve = SubResource( 3 )
@@ -460,7 +460,7 @@ position = Vector2( 50, 114 )
 curve = SubResource( 6 )
 
 [node name="PathFollow2D" parent="ChampiInside/YSort/Tables/Table3/YSort/Path2" index="0"]
-position = Vector2( 8.62031, 28.5636 )
+position = Vector2( 8.74537, 28.3804 )
 
 [node name="Path1" parent="ChampiInside/YSort/Tables/Table3/YSort" index="1"]
 curve = SubResource( 7 )
@@ -489,12 +489,13 @@ position = Vector2( -49, 40 )
 
 [node name="Bouteille" parent="ChampiInside/YSort" instance=ExtResource( 9 )]
 material = SubResource( 26 )
-position = Vector2( 116, 48 )
+position = Vector2( 108, 48 )
 z_index = 1
 
 [node name="Ingredients" type="Node2D" parent="ChampiInside/YSort"]
 
 [node name="Framboises" parent="ChampiInside/YSort/Ingredients" instance=ExtResource( 12 )]
+position = Vector2( 176, 19 )
 
 [node name="Sprite" parent="ChampiInside/YSort/Ingredients/Framboises" index="0"]
 material = SubResource( 31 )
@@ -507,23 +508,23 @@ material = SubResource( 32 )
 texture = ExtResource( 15 )
 
 [node name="Mirtilles" parent="ChampiInside/YSort/Ingredients" instance=ExtResource( 12 )]
-position = Vector2( 123, 12 )
+position = Vector2( 121, 13 )
 
 [node name="Sprite" parent="ChampiInside/YSort/Ingredients/Mirtilles" index="0"]
 material = SubResource( 33 )
 texture = ExtResource( 14 )
 
 [node name="Chauderon" parent="ChampiInside" instance=ExtResource( 11 )]
-position = Vector2( 130, 35 )
+position = Vector2( 126, 32 )
 
 [node name="SpawnPosition" type="Position2D" parent="ChampiInside"]
 position = Vector2( 119, 240 )
 
 [node name="Livre" type="TextureButton" parent="ChampiInside"]
-margin_left = 149.0
-margin_top = 40.0
-margin_right = 195.0
-margin_bottom = 59.0
+margin_left = 152.0
+margin_top = 38.0
+margin_right = 198.0
+margin_bottom = 60.0
 texture_normal = ExtResource( 10 )
 stretch_mode = 2
 flip_h = true
@@ -718,7 +719,7 @@ rotation = -0.55188
 shape = SubResource( 42 )
 
 [node name="BouteilleDefaultPos" type="Position2D" parent="ChampiInside"]
-position = Vector2( 116, 48 )
+position = Vector2( 109, 47 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
