@@ -14,12 +14,12 @@ func set_enabled(new_enabled):
 	visible = new_enabled
 
 
-func _input(event):
-	if event.is_action_pressed("click") and start_selected:
-		emit_signal("start_game_clicked")
+#func _input(event):
+#	if event.is_action_pressed("click") and start_selected:
+#		emit_signal("start_game_clicked")
 
 func _on_Area2D_mouse_entered():
-	start_selected = true
+	#start_selected = true
 	if !$Sprite/Porte/AnimationPlayer.is_playing():
 		$door.play()
 	$Sprite/Porte/AnimationPlayer.play("open_door")
@@ -28,7 +28,7 @@ func _on_Area2D_mouse_entered():
 
 
 func _on_Area2D_mouse_exited():
-	start_selected = false
+	#start_selected = false
 	$Sprite/Porte/AnimationPlayer.play_backwards("open_door")
 
 
@@ -46,3 +46,8 @@ func _on_Credits_pressed():
 
 func _on_TutoButton_pressed():
 	$Tuto.visible = !$Tuto.visible
+
+
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	if event.is_action_pressed("click"):
+		emit_signal("start_game_clicked")
