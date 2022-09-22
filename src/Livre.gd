@@ -6,12 +6,20 @@ onready var page = $pageSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	connect("mouse_entered", self, "_onMouse_entered")
+	connect("mouse_exited", self, "_onMouse_exited")
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _onMouse_entered():
+	material.set_shader_param("cornered", true)
+func _onMouse_exited():
+	material.set_shader_param("cornered", false)
 
 
 func _on_Livre_pressed():

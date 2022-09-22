@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://src/CameraMouse.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/bg.png" type="Texture" id=2]
@@ -36,6 +36,9 @@
 [ext_resource path="res://assets/audio/Elf 4.mp3" type="AudioStream" id=34]
 [ext_resource path="res://assets/renner/Renner_ 400 Book.ttf" type="DynamicFontData" id=35]
 [ext_resource path="res://assets/PixelOperator.ttf" type="DynamicFontData" id=36]
+[ext_resource path="res://assets/img/PileLivres.png" type="Texture" id=37]
+[ext_resource path="res://assets/img/pots.png" type="Texture" id=38]
+[ext_resource path="res://assets/img/Bougies.png" type="Texture" id=39]
 
 [sub_resource type="NavigationPolygon" id=11]
 vertices = PoolVector2Array( 117.224, 48.5355, 95, 48, 69, 47, 43, 43, 72, 25, 106, 20, 170, 23, 202, 44, 178, 50 )
@@ -284,6 +287,15 @@ shader_param/outlined = true
 shader_param/cornered = false
 shader_param/line_color = Color( 1, 1, 1, 1 )
 
+[sub_resource type="ShaderMaterial" id=52]
+resource_local_to_scene = true
+shader = ExtResource( 28 )
+shader_param/color_light = null
+shader_param/color_dark = null
+shader_param/outlined = true
+shader_param/cornered = false
+shader_param/line_color = Color( 1, 1, 1, 1 )
+
 [sub_resource type="ShaderMaterial" id=27]
 resource_local_to_scene = true
 shader = ExtResource( 21 )
@@ -428,6 +440,18 @@ position = Vector2( 27, 13 )
 position = Vector2( -15, 20 )
 shape = SubResource( 41 )
 
+[node name="Bougies" type="Sprite" parent="ChampiInside/YSort/Bar"]
+position = Vector2( 79, -22 )
+texture = ExtResource( 39 )
+
+[node name="PileLivres" type="Sprite" parent="ChampiInside/YSort/Bar/Bougies"]
+position = Vector2( -151, -1 )
+texture = ExtResource( 37 )
+
+[node name="Pots" type="Sprite" parent="ChampiInside/YSort/Bar/Bougies"]
+position = Vector2( -49, 3 )
+texture = ExtResource( 38 )
+
 [node name="Tables" type="Node2D" parent="ChampiInside/YSort"]
 z_index = 1
 
@@ -500,7 +524,7 @@ position = Vector2( -49, 40 )
 
 [node name="Bouteille" parent="ChampiInside/YSort" instance=ExtResource( 9 )]
 material = SubResource( 26 )
-position = Vector2( 108, 48 )
+position = Vector2( 103, 48 )
 z_index = 1
 
 [node name="Ingredients" type="Node2D" parent="ChampiInside/YSort"]
@@ -526,12 +550,13 @@ material = SubResource( 33 )
 texture = ExtResource( 14 )
 
 [node name="Chauderon" parent="ChampiInside" instance=ExtResource( 11 )]
-position = Vector2( 126, 32 )
+position = Vector2( 116, 32 )
 
 [node name="SpawnPosition" type="Position2D" parent="ChampiInside"]
 position = Vector2( 119, 240 )
 
 [node name="Livre" type="TextureButton" parent="ChampiInside"]
+material = SubResource( 52 )
 margin_left = 152.0
 margin_top = 38.0
 margin_right = 198.0
