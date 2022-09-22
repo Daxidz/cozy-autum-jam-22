@@ -180,6 +180,7 @@ func _on_Champi_reached(champi):
 		var new_colors = champi_couleurs[cur_recette]
 		champi.set_colors(new_colors[0], new_colors[1])
 		$Sounds/Drink.play()
+		$Sounds/Oh.play()
 		
 		cur_recette = ""
 		var table = champi.table
@@ -195,6 +196,7 @@ func _on_Champi_reached(champi):
 	if finished:
 		get_tree().call_group("champis", "dance")
 		$Sounds/Dance.play()
+		$EndPopup/EndPopupTimer.start()
 		
 	bouteille.empty()
 		
@@ -251,3 +253,15 @@ func _on_BehindBarArea_area_entered(area):
 		$YSort/LevelNavigation/NavOpen.enabled = false
 		$YSort/LevelNavigation/NavigationPolygonInstance.enabled = true
 		
+
+
+func _on_Restart_pressed():
+	get_tree().reload_current_scene()
+
+
+func _on_Continue_pressed():
+	$EndPopup.visible = false
+
+
+func _on_EndPopupTimer_timeout():
+	$EndPopup.visible = true

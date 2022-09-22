@@ -37,7 +37,7 @@ font_data = ExtResource( 5 )
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 9
+size = 8
 font_data = ExtResource( 7 )
 
 [node name="Menu" type="Node2D"]
@@ -103,29 +103,30 @@ focus_mode = 0
 flat = true
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-margin_left = 61.0
-margin_top = 26.0
-margin_right = 126.0
-margin_bottom = 125.0
+margin_left = 63.0
+margin_top = 30.0
+margin_right = 128.0
+margin_bottom = 129.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "Code: 
-Saraa & Dax
+astonedf & Dax
 
 Art: 
 Jess & Dax
 "
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
-margin_left = 145.0
-margin_top = 24.0
-margin_right = 210.0
+margin_left = 154.0
+margin_top = 23.0
+margin_right = 219.0
 margin_bottom = 140.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "Sounds:
-TODO
-
+From bundles
+Music:
+astonedf
 Cover Art: 
 Sar
 
@@ -142,8 +143,9 @@ margin_left = 8.0
 margin_top = 61.0
 margin_right = 71.0
 margin_bottom = 83.0
+focus_mode = 0
 custom_colors/font_color = Color( 1, 1, 0.882353, 1 )
-custom_colors/font_color_hover = Color( 0.137255, 0.352941, 0.388235, 1 )
+custom_colors/font_color_hover = Color( 0.364706, 0.462745, 0.407843, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Tutorial"
 flat = true

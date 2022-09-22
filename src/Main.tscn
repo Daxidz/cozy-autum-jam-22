@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://src/CameraMouse.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/bg.png" type="Texture" id=2]
@@ -33,6 +33,9 @@
 [ext_resource path="res://assets/img/porte_bar.png" type="Texture" id=31]
 [ext_resource path="res://assets/audio/Elf 7.mp3" type="AudioStream" id=32]
 [ext_resource path="res://assets/audio/Click_04.wav" type="AudioStream" id=33]
+[ext_resource path="res://assets/audio/Elf 4.mp3" type="AudioStream" id=34]
+[ext_resource path="res://assets/renner/Renner_ 400 Book.ttf" type="DynamicFontData" id=35]
+[ext_resource path="res://assets/PixelOperator.ttf" type="DynamicFontData" id=36]
 
 [sub_resource type="NavigationPolygon" id=11]
 vertices = PoolVector2Array( 117.224, 48.5355, 95, 48, 69, 47, 43, 43, 72, 25, 106, 20, 170, 23, 202, 44, 178, 50 )
@@ -321,6 +324,14 @@ shader_param/line_color = Color( 0.678431, 0.509804, 0.811765, 1 )
 radius = 1.11542
 height = 25.1521
 
+[sub_resource type="DynamicFont" id=50]
+size = 8
+font_data = ExtResource( 35 )
+
+[sub_resource type="DynamicFont" id=51]
+size = 12
+font_data = ExtResource( 36 )
+
 [node name="Main" type="Node2D"]
 script = ExtResource( 19 )
 
@@ -525,6 +536,7 @@ margin_left = 152.0
 margin_top = 38.0
 margin_right = 198.0
 margin_bottom = 60.0
+focus_mode = 0
 texture_normal = ExtResource( 10 )
 stretch_mode = 2
 flip_h = true
@@ -671,6 +683,7 @@ frame = 2
 [node name="Button" type="Button" parent="ChampiInside/Livre/Recette"]
 margin_right = 256.0
 margin_bottom = 256.0
+focus_mode = 0
 flat = true
 __meta__ = {
 "_edit_lock_": true
@@ -711,6 +724,10 @@ pitch_scale = 2.0
 [node name="ClickIngr" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
 stream = ExtResource( 33 )
 
+[node name="Oh" type="AudioStreamPlayer" parent="ChampiInside/Sounds"]
+stream = ExtResource( 34 )
+pitch_scale = 0.8
+
 [node name="BehindBarArea" type="Area2D" parent="ChampiInside"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChampiInside/BehindBarArea"]
@@ -720,6 +737,50 @@ shape = SubResource( 42 )
 
 [node name="BouteilleDefaultPos" type="Position2D" parent="ChampiInside"]
 position = Vector2( 109, 47 )
+
+[node name="EndPopup" type="CanvasLayer" parent="ChampiInside"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="ChampiInside/EndPopup"]
+margin_left = 88.0
+margin_top = 16.0
+margin_right = 160.0
+margin_bottom = 120.0
+color = Color( 0.764706, 0.447059, 0.537255, 1 )
+
+[node name="Label" type="Label" parent="ChampiInside/EndPopup/ColorRect"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 64.0
+margin_bottom = 65.0
+custom_colors/font_color = Color( 0.137255, 0.352941, 0.388235, 1 )
+custom_fonts/font = SubResource( 50 )
+text = "Let the season of love and mushrooms begin !"
+align = 1
+autowrap = true
+
+[node name="Restart" type="Button" parent="ChampiInside/EndPopup/ColorRect"]
+margin_top = 64.0
+margin_right = 72.0
+margin_bottom = 83.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.32549, 0.227451, 0.266667, 1 )
+custom_fonts/font = SubResource( 51 )
+text = "Restart"
+flat = true
+
+[node name="Continue" type="Button" parent="ChampiInside/EndPopup/ColorRect"]
+margin_top = 85.0
+margin_right = 72.0
+margin_bottom = 104.0
+custom_colors/font_color = Color( 0.32549, 0.227451, 0.266667, 1 )
+custom_fonts/font = SubResource( 51 )
+text = "Continue"
+flat = true
+
+[node name="EndPopupTimer" type="Timer" parent="ChampiInside/EndPopup"]
+wait_time = 3.0
+one_shot = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
@@ -731,6 +792,9 @@ visible = false
 [connection signal="pressed" from="ChampiInside/Livre" to="ChampiInside/Livre" method="_on_Livre_pressed"]
 [connection signal="pressed" from="ChampiInside/Livre/Recette/Button" to="ChampiInside/Livre" method="_on_Button_pressed"]
 [connection signal="area_entered" from="ChampiInside/BehindBarArea" to="ChampiInside" method="_on_BehindBarArea_area_entered"]
+[connection signal="pressed" from="ChampiInside/EndPopup/ColorRect/Restart" to="ChampiInside" method="_on_Restart_pressed"]
+[connection signal="pressed" from="ChampiInside/EndPopup/ColorRect/Continue" to="ChampiInside" method="_on_Continue_pressed"]
+[connection signal="timeout" from="ChampiInside/EndPopup/EndPopupTimer" to="ChampiInside" method="_on_EndPopupTimer_timeout"]
 
 [editable path="ChampiInside/YSort/Tables/Table1"]
 [editable path="ChampiInside/YSort/Tables/Table2"]
